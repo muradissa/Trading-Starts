@@ -1,0 +1,32 @@
+.container__top{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+/**/
+ .container__table-buy {
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    overflow: hidden;
+}
+.table__title{
+    text-align: center;
+    margin: 0 auto;
+    display: table;
+    padding-top: 5px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 1rem 1rem 0 0;
+}
+.text-buy{
+    background: #2e7c67;
+}
+.text-sell{
+    background: #8e3d3d;
+}
+.text-top-ten{
+    background: #9c8401;
+}

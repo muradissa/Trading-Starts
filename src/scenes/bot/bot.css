@@ -1,0 +1,81 @@
+.container__bot{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding:2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.container__bot-table{
+  margin: 1rem 0rem;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #1F2A40;
+}
+.table__header{
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+  border: 1px;
+  border-radius: 5px ;
+}
+th {
+  padding: 10px;
+  background-color:#3e4396 ;
+  text-align:center;
+}
+td {
+  padding: 10px;
+  text-align:center;
+}
+tr{
+  transition: 0.1s;
+}
+tr:hover {
+  background-color: #0c101b;
+}
+.table__footer{
+  margin: 0 auto;
+  text-align: center;
+  background-color: #3e4396;
+}
+.table__element-secondry-text{
+  margin: 0 auto;
+}
+.table__footer-text{
+  margin: 0 auto;
+  padding:10px;
+  font-size: 14px;
+}
+.text-bot-orders{
+  background-color: #3e4396;
+}
+@media screen and (max-width: 600px) {
+  th, td {
+    display: block;
+  }
+
+  th {
+    text-align: center;
+    background-color: #ddd;
+  }
+}
+/***** Charts ******/
+.container__profit-charts{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:2rem;
+    padding:2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+.container__charts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:2rem;
+    padding:2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
