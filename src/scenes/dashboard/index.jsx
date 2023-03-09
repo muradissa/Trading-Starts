@@ -45,12 +45,13 @@ const Dashboard = () =>{
          
             <Box style={{maxWidth:"100%"}}>
                 {/* <PostBuy ></PostBuy> */}
+                {/* {Crypto} */}
                 <div className='container__top'>
                   <div>
                     <div className='table__title' >
                         <h4 className='table__title text-buy' >Crypto | Buy</h4>
                     </div>
-                    <div className="container__table-buy">
+                    <div className="container__table-template">
                       <TopFiveCrypto/>
                     </div>
                   </div>
@@ -58,16 +59,16 @@ const Dashboard = () =>{
                     <div className='table__title' >
                         <h4 className='table__title text-sell' >Crypto | SELL</h4>
                     </div>
-                    <div className="container__table-buy">
+                    <div className="container__table-template">
                       <TopFiveCrypto/>
                     </div>
                   </div>
-
+                  {/* {Stocks} */}
                   <div>
                     <div className='table__title' >
                         <h4 className='table__title text-buy' >Stocks | Buy</h4>
                     </div>
-                    <div className="container__table-buy">
+                    <div className="container__table-template">
                       <TopFiveStock/>
                     </div>
                   </div>
@@ -75,19 +76,12 @@ const Dashboard = () =>{
                     <div className='table__title' >
                         <h4 className='table__title text-sell' >Stocks | SELL</h4>
                     </div>
-                    <div className="container__table-buy">
+                    <div className="container__table-template">
                       <TopFiveStock/>
                     </div>
                   </div>
-                  <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Crypto 1h</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div>
-                  <div>
+                 
+                  {/* <div>
                     <div className='table__title1' >
                         <h4 className='table__title text-top-ten' >Highest Stock 24h</h4>
                     </div>
@@ -110,9 +104,9 @@ const Dashboard = () =>{
                     <div className="container__table-buy">
                       <HighestCrypto/>
                     </div>
-                  </div>  
+                  </div>   */}
                    
-                  <div>
+                  {/* <div>
                     <VwapChart/>
                   </div>
                   <div>
@@ -123,8 +117,18 @@ const Dashboard = () =>{
                   </div>
                   <div>
                     <VwapChart/>
-                  </div>
+                  </div> */}
                 </div>
+                 <div  className='container__top2'>
+                  <div>
+                      <div className='table__title1' >
+                          <h4 className='table__title text-top-ten' >Top Ten Crypto</h4>
+                      </div>
+                      <div className="container__table-template">
+                        <HighestCrypto/>
+                      </div>
+                    </div>
+                 </div>
 
 
 

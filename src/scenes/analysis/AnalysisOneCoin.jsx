@@ -1,0 +1,183 @@
+import React,{useState,useEffect} from 'react';
+import axios from "axios";
+import VwapChart from "../charts/VwapChart";
+
+import './analysis.css';
+
+function AnalysisOneCoin() {
+    const [priceAndTPS, setPriceAndTPS] = useState([]);
+    const [coinPVT, setCoinPVT] = useState([]);
+    const [coinPVComparing, setCoinPVComparing] = useState([]);
+    const [coinVwap48Time15m, setCoinVwap48Time15m] = useState([]);
+    const firstColumnPVT =['Price','Volume','Trades'];
+    const [timer30Sec, setTimer30Sec] = useState(false);
+
+    const getCoinPriceAndTPS = async () =>{
+        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-price-tps');
+        if(response.status === 200){
+            setPriceAndTPS(response.data['result'])
+        }
+    }
+    const getCoinVWAP4815m = async () =>{
+        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-vwap48-15min');
+        if(response.status === 200){
+            setCoinVwap48Time15m(response.data['result'])
+        }
+    }
+    const getCoinTablePVT = async () =>{
+        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-pvt-24h');
+        if(response.status === 200){
+            setCoinPVT(response.data['result'])
+        }
+    }
+    const getCoinTablePVComparing = async () =>{
+        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-vt-comapring');
+        if(response.status === 200){
+            setCoinPVComparing(response.data['result'])
+        }
+    }
+
+    const changeTextColorPercentage = (percentage) =>{
+        if(Number(percentage) > 0){
+            return 'green';
+        }
+        if(Number(percentage) < 0){
+            return 'red';
+        }
+        return 'white';
+    }
+
+    useEffect(() => {
+        getCoinPriceAndTPS();
+        getCoinTablePVT();
+        getCoinTablePVComparing();
+        getCoinVWAP4815m();
+        const interval = setInterval(async () => {
+            try{
+                const response1 = await axios.get('http://localhost:5000/api/crypto/getcoin-price-tps');
+                const response2 = await axios.get('http://localhost:5000/api/crypto/getcoin-pvt-24h');
+                const response3 = await axios.get('http://localhost:5000/api/crypto/getcoin-vwap48-15min');
+                const response4 = await axios.get('http://localhost:5000/api/crypto/getcoin-vt-comapring');
+
+                if(response1.status === 200){
+                    getCoinPriceAndTPS(response1.data['result'])
+                }
+                if(response2.status === 200){
+                    setCoinPVT(response2.data['result'])
+                }
+                if(response3.status === 200){
+                    setCoinVwap48Time15m(response3.data['result'])
+                }
+                if(response4.status === 200){
+                    setCoinPVComparing(response4.data['result'])
+                }
+            }catch(err){
+                console.log("Error from getcoin Analysis");
+            }
+
+        }, 15000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // useEffect(() =>{
+    //         getCoinPriceAndTPS();
+    //         getCoinTablePVT();
+    //         getCoinTablePVComparing();
+    // },[]); 
+ 
+  return (
+    <div className='container__analysis-coin'>
+        <div className='' >
+            <h2 className='' >Coin : BTCUSDT - ${priceAndTPS['close']} | TPS : {priceAndTPS['tps']}</h2>{/**TPS : trade per second ,update every 1min price and tps*/}
+        </div>
+        <div className='container__table-template'>
+            <table >
+                <thead style={{borderBottom:"1px solid #fff"}}>
+                    <tr className="table__header">
+                        <th>#</th>
+                        <th>5m</th>
+                        <th>15m</th>
+                        <th>1h</th> {/**avg */}
+                        <th>4h</th> {/**avg */}
+                        <th>24h</th> {/**avg */}
+                    </tr>
+                </thead>
+                <tbody style={{borderBottom:"1px solid #fff"}}>
+                    {
+                        coinPVT.map((rawData,index) =>{
+                            return(
+                                <tr>
+                                    <td style={{backgroundColor:'#3e4396'}}>{firstColumnPVT[index]}</td>
+                                    <td>{rawData['min5']}%</td>
+                                    <td>{rawData['min15']}%</td>
+                                    <td>{rawData['h1']}%</td>
+                                    <td>{rawData['h4']}%</td>
+                                    <td>{rawData['h24']}%</td>
+                                </tr>
+                            )
+                        })
+                    }              
+                </tbody>
+            </table>
+            <div className='table__footer' >
+                <h5 className='table__footer-text' >Note : volume and trades comparing the avg with the last 15min</h5>
+            </div>
+        </div>
+        <div className='container__table-template'>
+            <table >
+                <thead style={{borderBottom:"1px solid #fff"}}>
+                    <tr className="table__header">
+                        <th>#</th>
+                        <th>1h</th>
+                        <th>2h</th>
+                        <th>3h</th> 
+                        <th>4h</th> 
+                        <th>1d</th>
+                        <th>2d</th>  
+                        <th>3d</th> 
+                        <th>4d</th> 
+                        <th>5d</th> 
+                        <th>6d</th> 
+                    </tr>
+                </thead>
+                <tbody style={{borderBottom:"1px solid #fff"}}>
+                    {
+                        coinPVComparing.map((rawData,index) =>{
+                            return(
+                                /**
+                                 * {h1: 0,h2: 0,h3 : 0,h4 : 0,d1: 0,d2: 0,d3: 0,d4: 0,d5: 0,d6: 0}
+                                 */
+                                <tr>
+                                    <td style={{backgroundColor:'#3e4396'}}>{firstColumnPVT[index+1]}</td>
+                                    <td style={{color:changeTextColorPercentage(rawData['h1'])}}>{rawData['h1']}%</td>
+                                    <td>{rawData['h2']}%</td>
+                                    <td>{rawData['h3']}%</td>
+                                    <td>{rawData['h4']}%</td>
+                                    <td>{rawData['d1']}%</td>
+                                    <td>{rawData['d2']}%</td>
+                                    <td>{rawData['d3']}%</td>
+                                    <td>{rawData['d4']}%</td>
+                                    <td>{rawData['d5']}%</td>
+                                    <td>{rawData['d6']}%</td>
+                                </tr>
+                            )
+                        })
+                    }              
+                </tbody>
+            </table>
+            <div className='table__footer' >
+                <h5 className='table__footer-text' >Note : volume and trades comparing 1:1</h5>
+            </div>
+        </div>
+        <div>
+            <VwapChart coinVwap48Time15m={coinVwap48Time15m}/>
+        </div>
+
+        <div> 
+            VWAP PRO
+        </div>
+    </div>
+  )
+}
+
+export default AnalysisOneCoin

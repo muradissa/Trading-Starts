@@ -30,45 +30,55 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'VWAP BTC',
+      text: '',
     },
   },
 };
 
-const labels = ['', '', '', '', '', '', '','', '', '', '', '', '', '','', '', '', '', '', '', ''];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'VWAP 48',
-      data: labels.map(() => faker.datatype.number({ min: -6, max: 6 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'VWAP 96',
-      data: labels.map(() => faker.datatype.number({ min: -6, max: 6 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-    {
-      label: '-3',
-      data: labels.map(() => faker.datatype.number({ min: -3, max: -3 })),
-      borderColor: 'rgb(255, 220, 0)',
-      backgroundColor: 'rgba(255, 220, 0, 0.5)',
-    },
-    {
-      label: '3',
-      data: labels.map(() => faker.datatype.number({ min: 3, max: 3 })),
-      borderColor: 'rgb(255, 220, 0)',
-      backgroundColor: 'rgba(255, 220, 0, 0.5)',
-    },
-  ],
-};
+const labels = ['', '', '', '', '', '', '','', '', '', '', '', '', '','', '', '', '', '', '', '','','','',
+'', '', '', '', '', '', '','', '', '', '', '', '', '','', '', '', '', '', '', '','','','','',''];
 
 
-function VwapChart() {
+function VwapChart(props) {
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'VWAP 48',
+        data: labels.map((temp,index) => props.coinVwap48Time15m[index]),
+        borderColor: 'rgb(255, 220, 0)',
+        backgroundColor: 'rgba(255, 220, 0, 0.5)',
+      },
+      {
+        label: '2',
+        // data: labels.map(() => faker.datatype.number({ min: 3, max: 3 })),
+        data: labels.map(() => 2),
+        borderColor: 'rgb(62, 67, 150)',
+        backgroundColor: 'rgba(205,92,92, 0.5)',
+      },
+      {
+        label: '-2',
+        // data: labels.map(() => faker.datatype.number({ min: 3, max: 3 })),
+        data: labels.map(() => -2),
+        borderColor: 'rgb(62, 67, 150)',
+        backgroundColor: 'rgba(205,92,92, 0.5)',
+      },
+      {
+        label: '-3',
+        data: labels.map(() => -3),
+        borderColor: 'rgb(62, 67, 150)',
+        backgroundColor: 'rgba(0, 255, 50, 0.5)',
+      },
+      {
+        label: '3',
+        // data: labels.map(() => faker.datatype.number({ min: 3, max: 3 })),
+        data: labels.map(() => 3),
+        borderColor: 'rgb(62, 67, 150)',
+        backgroundColor: 'rgba(255,0,50, 0.5)',
+      },
+    ],
+  };
   return (
     <div><Line options={options} data={data} /></div>
   )

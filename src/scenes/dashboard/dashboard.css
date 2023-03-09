@@ -5,8 +5,15 @@
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
+.container__top2{
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap:2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
 /**/
- .container__table-buy {
+ .container__table-template {
     border-radius: 1rem;
     border: 1px solid transparent;
     transition: 0.3s;

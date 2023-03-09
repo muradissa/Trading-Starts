@@ -11,9 +11,9 @@ function BotDashboard() {
         <div className='container__bot'>
             <div className='container__bot-table'>
                 <div className='' >
-                    <h4 className='table__title text-bot-orders' >Bot Orders</h4>
+                    <h4 className='table__title text-bot-orders' >Open Orders</h4>
                 </div>
-                <div className="container__table-buy">
+                <div className="container__table-template">
                     <OrdersTable/>
                 </div>
             </div>
@@ -22,7 +22,7 @@ function BotDashboard() {
                 <div className='' >
                     <h4 className='table__title text-bot-orders' >Orders History</h4>
                 </div>
-                <div className="container__table-buy">
+                <div className="container__table-template">
                     <TradeHistsory/>
                 </div>
             </div>

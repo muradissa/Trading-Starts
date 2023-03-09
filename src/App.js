@@ -19,7 +19,9 @@ import GeneralInfoForm from "./scenes/profileSettings/GeneralInfoForm"
 // import UpdateProfile from "./UpdateProfile"
 
 import Dashboard from "./scenes/dashboard";
+import DashList from "./scenes/lists/DashList";
 import BotDashboard from "./scenes/bot/BotDashboard";
+import CryptoAnalysis from "./scenes/analysis/CryptoAnalysis"
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
@@ -73,6 +75,8 @@ function App() {
                     <Route element={<Layout />} style={{ minHeight: "100vh" }}>
                       <Route exact path='/' element={<Dashboard/>}/>
                       <Route exact path='/tradingbot' element={<BotDashboard/>}/>
+                      <Route exact path='/lists' element={<DashList/>}/>
+                      <Route exact path='/analysis' element={<CryptoAnalysis/>}/>
                       <Route path="/group" element={<Team />} />
                       <Route path="/contacts" element={<Contacts />} />
                       <Route path="/invoices" element={<Invoices />} />

@@ -129,7 +129,7 @@ const Sidebar = () => {
             </Typography>
             <Item
               title="List"
-              to="/"
+              to="/lists"
               icon={<CurrencyExchangeIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -138,6 +138,14 @@ const Sidebar = () => {
             <Item
               title="Tracking"
               to="/"
+              icon={<Groups3OutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+            <Item
+              title="Analysis"
+              to="/analysis"
               icon={<Groups3OutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
