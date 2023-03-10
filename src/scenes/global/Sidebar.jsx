@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, } from "react";
 import { ProSidebarProvider , Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link,NavLink } from "react-router-dom";
 import { tokens } from "../../theme";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -13,7 +12,11 @@ import Divider from '@mui/material/Divider';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Groups3OutlinedIcon from '@mui/icons-material/Groups3Outlined';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import DeveloperModeOutlinedIcon from '@mui/icons-material/DeveloperModeOutlined';
+import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
 
 const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   const theme = useTheme();
@@ -43,13 +46,13 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({changeStatusMenu}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
-  console.log("");
 
+  // useEffect(() =>changeStatusMenu,isCollapsed)
   return (
     <Box   width={isCollapsed ? "80px" : "300px"} background={colors.primary[400]}  sx={{
         minHeight: "100vh",
@@ -85,18 +88,20 @@ const Sidebar = () => {
             
          
             <Box mb="25px" padding="1.5rem 1rem 0rem 1.5rem " marginBottom="1rem" >
-              <Box display="flex" justifyContent="center" alignItems="center">
-              {!isCollapsed ? 
-                ( <img
+              <Box display="flex" justifyContent="" alignItems="center">
+                <img
                   alt="profile-user"
-                  width="100%"
-                  src={`../../assets/logo-no-background.png`}
+                  // height="3rem"
+                  height="40px"
+                  // width="100%"
+                  src={`../../assets/logo-no-background1.png`}
                   style={{ cursor: "pointer"}}
-                />)
-                :
+                />
+                {!isCollapsed && 
                 ( <img
                   alt="profile-user"
-                  width="100%"
+                  height="40px"
+                  
                   src={`../../assets/logo-no-background2.png`}
                   style={{ cursor: "pointer"}}
                 />)
@@ -106,21 +111,16 @@ const Sidebar = () => {
          
           <MenuItem                     
                 style={{ background:  colors.primary[700]}}
-                onClick={() => setIsCollapsed(!isCollapsed)}
+                onClick={() => {
+                  setIsCollapsed(!isCollapsed)
+                }}
                 icon={<MenuOutlinedIcon />} 
             >
             {!isCollapsed && <Typography>Menu</Typography>}        
           </MenuItem>
 
           <Box paddingTop="0px" paddingLeft={isCollapsed ? "5%" : "5%"} paddingRight={isCollapsed ? "5%" : "5%"} >
-            <Item
-              title="Profile"
-              to="/"
-              icon={<AccountCircleIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
+            
             
             <Divider/>
             {/********** Crypto **********/}
@@ -135,29 +135,37 @@ const Sidebar = () => {
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
-            <Item
+            {/* <Item
               title="Tracking"
               to="/"
-              icon={<Groups3OutlinedIcon />}
+              icon={<QueryStatsIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
-            />
+            /> */}
             <Item
               title="Analysis"
               to="/analysis"
-              icon={<Groups3OutlinedIcon />}
+              icon={<LeaderboardIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
             <Item
-              title="classification"
+              title="Trading history"
               to="/"
-              icon={<Groups3OutlinedIcon />}
+              icon={<SmartToyIcon />}
               selected={selected}
               setSelected={setSelected}
-              isCollapsed={isCollapsed}
+              isCollapsed={isCollapsed} 
+            />
+            <Item
+              title="Wallet"
+              to="/"
+              icon={<WalletOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed} 
             />
 
             <Divider/>
@@ -173,7 +181,7 @@ const Sidebar = () => {
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
-            <Item
+            {/* <Item
               title="Tracking2"
               to="/"
               icon={<CurrencyExchangeIcon />}
@@ -190,10 +198,10 @@ const Sidebar = () => {
               isCollapsed={isCollapsed}
             />
             
-            <Divider/>
+            <Divider/> */}
 
             {/********** data **********/}
-            <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>      
+            {/* <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>      
               Data
             </Typography>
             <Item
@@ -211,13 +219,21 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
-            />
+            /> */}
 
             {/* ******* Settings ****** */}
             <Divider/>
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>      
               Settings
             </Typography>
+            <Item
+              title="Profile"
+              to="/"
+              icon={<AccountCircleIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
             <Item
               title="Dark/Light Theme"
               to="/"

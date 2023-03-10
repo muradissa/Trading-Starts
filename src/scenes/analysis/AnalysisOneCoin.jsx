@@ -4,34 +4,43 @@ import VwapChart from "../charts/VwapChart";
 
 import './analysis.css';
 
-function AnalysisOneCoin() {
+function AnalysisOneCoin(props) {
     const [priceAndTPS, setPriceAndTPS] = useState([]);
     const [coinPVT, setCoinPVT] = useState([]);
     const [coinPVComparing, setCoinPVComparing] = useState([]);
     const [coinVwap48Time15m, setCoinVwap48Time15m] = useState([]);
     const firstColumnPVT =['Price','Volume','Trades'];
     const [timer30Sec, setTimer30Sec] = useState(false);
+    const [coinNAME, setcoinNAME] = useState(('BTCUSDT'));
 
+    // setcoinNAME(props.selectedCoin)
+    const coinName =()=>{
+        if(props.selectedCoin === undefined){
+            return 'BTCUSDT'
+        }
+        // setcoinNAME(props.selectedCoin)
+        return props.selectedCoin;
+    }
     const getCoinPriceAndTPS = async () =>{
-        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-price-tps');
+        const response =  await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-price-tps/${props.selectedCoin}`);
         if(response.status === 200){
             setPriceAndTPS(response.data['result'])
         }
     }
     const getCoinVWAP4815m = async () =>{
-        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-vwap48-15min');
+        const response = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-15min/${props.selectedCoin}`);
         if(response.status === 200){
             setCoinVwap48Time15m(response.data['result'])
         }
     }
     const getCoinTablePVT = async () =>{
-        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-pvt-24h');
+        const response = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-pvt-24h/${props.selectedCoin}`)
         if(response.status === 200){
             setCoinPVT(response.data['result'])
         }
     }
     const getCoinTablePVComparing = async () =>{
-        const response = await axios.get('http://localhost:5000/api/crypto/getcoin-vt-comapring');
+        const response = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vt-comapring/${props.selectedCoin}`);
         if(response.status === 200){
             setCoinPVComparing(response.data['result'])
         }
@@ -44,7 +53,7 @@ function AnalysisOneCoin() {
         if(Number(percentage) < 0){
             return 'red';
         }
-        return 'white';
+        return 'white'; 
     }
 
     useEffect(() => {
@@ -54,14 +63,16 @@ function AnalysisOneCoin() {
         getCoinVWAP4815m();
         const interval = setInterval(async () => {
             try{
-                const response1 = await axios.get('http://localhost:5000/api/crypto/getcoin-price-tps');
-                const response2 = await axios.get('http://localhost:5000/api/crypto/getcoin-pvt-24h');
-                const response3 = await axios.get('http://localhost:5000/api/crypto/getcoin-vwap48-15min');
-                const response4 = await axios.get('http://localhost:5000/api/crypto/getcoin-vt-comapring');
+                const response1 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-price-tps/${props.selectedCoin}`);
+                // getCoinPriceAndTPS();
 
-                if(response1.status === 200){
-                    getCoinPriceAndTPS(response1.data['result'])
-                }
+                const response2 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-pvt-24h/${props.selectedCoin}`)
+                const response3 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-15min/${props.selectedCoin}`);
+                const response4 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vt-comapring/${props.selectedCoin}`);
+
+                // if(response1.status === 200){
+                //     setPriceAndTPS(response1.data['result'])
+                // }
                 if(response2.status === 200){
                     setCoinPVT(response2.data['result'])
                 }
@@ -88,7 +99,7 @@ function AnalysisOneCoin() {
   return (
     <div className='container__analysis-coin'>
         <div className='' >
-            <h2 className='' >Coin : BTCUSDT - ${priceAndTPS['close']} | TPS : {priceAndTPS['tps']}</h2>{/**TPS : trade per second ,update every 1min price and tps*/}
+            <h2 className='' >{coinName()} - ${priceAndTPS['close']} - TPS : {priceAndTPS['tps']} </h2>{/**TPS : trade per second ,update every 1min price and tps*/}
         </div>
         <div className='container__table-template'>
             <table >
@@ -123,11 +134,13 @@ function AnalysisOneCoin() {
                 <h5 className='table__footer-text' >Note : volume and trades comparing the avg with the last 15min</h5>
             </div>
         </div>
+        <br/>
+        <br/>
         <div className='container__table-template'>
             <table >
                 <thead style={{borderBottom:"1px solid #fff"}}>
                     <tr className="table__header">
-                        <th>#</th>
+                        <th></th>
                         <th>1h</th>
                         <th>2h</th>
                         <th>3h</th> 
@@ -169,7 +182,8 @@ function AnalysisOneCoin() {
                 <h5 className='table__footer-text' >Note : volume and trades comparing 1:1</h5>
             </div>
         </div>
-        <div>
+        <div className='container__charts-vwap-trades'>
+            <VwapChart coinVwap48Time15m={coinVwap48Time15m}/>
             <VwapChart coinVwap48Time15m={coinVwap48Time15m}/>
         </div>
 

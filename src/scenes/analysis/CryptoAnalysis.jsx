@@ -1,13 +1,34 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react';
+import axios from "axios";
 import AnalysisOneCoin from './AnalysisOneCoin';
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 
 function CryptoAnalysis() {
- const data =[];
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [coinsData, setCoinsData] = useState([]);
+  const [selectedCoin,setSelectedCoin] = useState('BTCUSDT')
+  const [isLoading, setLoading] = useState(false);
+
+
+  const getAllCoinsData = async () =>{
+    const response = await axios.get('http://localhost:5000/api/crypto/analysis/getallcoinsdata');
+      if(response.status === 200){
+        // console.log(response.data['result']);
+        setCoinsData(response.data['result'].filter(item => item.tps !== 0))
+      }
+  }
+  const onRowsSelectionHandler = (ids) => {
+
+    const selectedRowsData = ids.map((id) => coinsData.find((row) => row.coin === id));
+    setSelectedCoin(selectedRowsData[0].coin)
+    setLoading(!isLoading)
+
+    // console.log(selectedRowsData[0].coin);
+  };
+
   const columns = [
     {
       field: "coin",
@@ -16,17 +37,17 @@ function CryptoAnalysis() {
       cellClassName: "name-column--cell",
     },
     {
-      field: "price",
+      field: "price", 
       headerName: "Price",
       flex: 1,
     },
     {
       field: "tps",
-      headerName: "Trades",
+      headerName: "TPS",
       flex: 1,
     },
     {
-      field: "Volume",
+      field: "volume",
       headerName: "Volume",
       flex: 1,
     },
@@ -45,25 +66,30 @@ function CryptoAnalysis() {
       headerName: "VWAP48 1h",
       flex: 1,
     },
-    // {
-    //   field: "cost",
-    //   headerName: "Cost",
-    //   flex: 1,
-    //   renderCell: (params) => (
-    //     <Typography color={colors.greenAccent[500]}>
-    //       ${params.row.cost}
-    //     </Typography>
-    //   ),
-    // },
+
   ];
+  useEffect(() => {
+    getAllCoinsData();
+    const interval = setInterval(async () => {
+        try{
+            const response = await axios.get('http://localhost:5000/api/crypto/analysis/getallcoinsdata');
+            if(response.status === 200){
+              setCoinsData(response.data['result'].filter(item => item.tps !== 0))
+            }
+        }catch(err){
+            console.log("Error from getcoin get all coinsData");
+        }
+      }, 15000);
+      return () => clearInterval(interval);
+  }, []);
 
   return (
     <div>
-      <Box m="20px">
+      <Box m="2rem" paddingLeft="">
         {/* <Header title="change it later" subtitle="List of Invoice Balances" /> */}
         <Box
           m="40px 0 0 0"
-          height="75vh"
+          height="60vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -90,11 +116,15 @@ function CryptoAnalysis() {
             },
           }}
         >
-          <DataGrid  rows={data} columns={columns} />
+          <DataGrid  rows={coinsData} columns={columns} getRowId={(row) =>  row.coin} onSelectionModelChange={(ids) => onRowsSelectionHandler(ids)} />
         </Box>
       </Box>
-      <div>
-        <AnalysisOneCoin/>
+      <div className=''>
+        {isLoading ? <div>loading</div>: <AnalysisOneCoin selectedCoin={selectedCoin}/>
+        
+        }
+        
+        
       </div>
     </div>
     

@@ -40,7 +40,7 @@ const Navbar = () => {
       {/* <a href='/tradingbot' className={activeNav==='#portfolio' ?'active':''} onClick={() => setActiveNav('#portfolio')}><FaRobot style={{margin:'auto auto'}}/>Bot</a> */}
       {/* <a href='#contact' className={activeNav==='#contact' ?'active':''} onClick={() => setActiveNav('#contact')}><TbMapSearch style={{margin:'auto auto'}}/>Trading Map</a> */}
     </nav>
-    <div className='radios__buttons'>
+    {/* <div className='radios__buttons'>
       <div class="group">
         <input type="radio" name="rb" id="rb1" />
         <label for="rb1">Both</label>
@@ -49,7 +49,7 @@ const Navbar = () => {
         <input type="radio" name="rb" id="rb3" />
         <label for="rb3">Crypto</label>
       </div>
-    </div>
+    </div> */}
     </>
   )
 }

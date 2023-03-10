@@ -25,21 +25,21 @@ import CryptoAnalysis from "./scenes/analysis/CryptoAnalysis"
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
-// import Bar from "./scenes/bar";
-// import Form from "./scenes/form";
-// import Line from "./scenes/line";
-// import Pie from "./scenes/pie";
-// import FAQ from "./scenes/faq";
-// import Geography from "./scenes/geography";
-// import Calendar from "./scenes/calendar/calendar";
+
 
 function App() {
   const [theme , colorMode] = useMode();
+  const [openMenu, setOpenMenu] = useState(true);
+  const changeStatusMenu= ()=>{
+    const statuss=!openMenu
+    setOpenMenu(statuss);
+    return statuss;
+  }
   const Layout = () => (
     <div className="main__container" style={{width:"100%"}}>
 
-      <Sidebar />
-      <main className="content" style={{paddingLeft:"300px"}}>
+      <Sidebar changeStatusMenu={changeStatusMenu}/>
+      <main className="content" style={{paddingLeft:openMenu?"300px":"80px"}}>
         <Navbar/>
         {/* <Topbar /> */}
         <Outlet />

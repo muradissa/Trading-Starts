@@ -1,7 +1,14 @@
 .container__analysis-coin{
     padding-left: 2rem;
     padding-right: 2rem;
+    
 }
 /* .container__analysis-table{
     border-radius: 1rem;
 } */
+
+.container__charts-vwap-trades{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:2rem;
+}
