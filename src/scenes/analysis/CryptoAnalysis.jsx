@@ -4,6 +4,8 @@ import AnalysisOneCoin from './AnalysisOneCoin';
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
+import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function CryptoAnalysis() {
   const theme = useTheme();
@@ -12,6 +14,7 @@ function CryptoAnalysis() {
   const [selectedCoin,setSelectedCoin] = useState('BTCUSDT')
   const [isLoading, setLoading] = useState(false);
 
+  
 
   const getAllCoinsData = async () =>{
     const response = await axios.get('http://localhost:5000/api/crypto/analysis/getallcoinsdata');
@@ -21,12 +24,13 @@ function CryptoAnalysis() {
       }
   }
   const onRowsSelectionHandler = (ids) => {
-
+    setLoading(true)
     const selectedRowsData = ids.map((id) => coinsData.find((row) => row.coin === id));
     setSelectedCoin(selectedRowsData[0].coin)
-    setLoading(!isLoading)
-
-    // console.log(selectedRowsData[0].coin);
+    setTimeout(function(){
+      setLoading(false)
+    }, 500);
+    // setLoading(!isLoading)
   };
 
   const columns = [
@@ -120,7 +124,12 @@ function CryptoAnalysis() {
         </Box>
       </Box>
       <div className=''>
-        {isLoading ? <div>loading</div>: <AnalysisOneCoin selectedCoin={selectedCoin}/>
+        {isLoading ? 
+          <div style={{margin:"0 auto",display: 'table',height:''}}>           
+            <CircularProgress style={{color:"white",scale:"1.5"}}/>
+          </div>
+          : 
+          <AnalysisOneCoin selectedCoin={selectedCoin}/>
         
         }
         

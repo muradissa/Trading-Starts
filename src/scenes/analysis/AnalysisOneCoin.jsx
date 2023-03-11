@@ -98,8 +98,8 @@ function AnalysisOneCoin(props) {
  
   return (
     <div className='container__analysis-coin'>
-        <div className='' >
-            <h2 className='' >{coinName()} - ${priceAndTPS['close']} - TPS : {priceAndTPS['tps']} </h2>{/**TPS : trade per second ,update every 1min price and tps*/}
+        <div className='' style={{margin:"0 auto",display:"table"}}>
+            <h2 className='' >{coinName()} - <b style={{color:"yellow"}}>${priceAndTPS['close']}</b> - TPS : {priceAndTPS['tps']} </h2>{/**TPS : trade per second ,update every 1min price and tps*/}
         </div>
         <div className='container__table-template'>
             <table >
