@@ -14,17 +14,14 @@ import Signup from "./scenes/signup/Signup"
 import PrivateRoute from "./scenes/privateRoute/PrivateRoute"
 import { AuthProvider,useAuth } from "./contexts/AuthContext"
 import GeneralInfoForm from "./scenes/profileSettings/GeneralInfoForm"
-// import PrivateRoute from "./PrivateRoute"
-// import ForgotPassword from "./ForgotPassword"
-// import UpdateProfile from "./UpdateProfile"
+
 
 import Dashboard from "./scenes/dashboard";
 import DashList from "./scenes/lists/DashList";
 import BotDashboard from "./scenes/bot/BotDashboard";
+import CryptoHistory from "./scenes/bot/CryptoHistory";
 import CryptoAnalysis from "./scenes/analysis/CryptoAnalysis"
-import Team from "./scenes/team";
-import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
+
 
 
 function App() {
@@ -60,36 +57,26 @@ function App() {
             >
               <div className="w-100" style={{ maxWidth: "4000px" }}>
                 <Routes>  
-             
                   <Route path="/login" element={<Login/>} />
                   <Route path="/signup" element={<Signup />} />
-                 
                 </Routes>
               </div>
             </Container>
             
             <div className="app" > 
-             
-
-                <Routes >
-                  <Route element={<PrivateRoute/>}>
-                    <Route element={<Layout />} style={{ minHeight: "100vh" }}>
-                      <Route exact path='/' element={<Dashboard/>}/>
-                      <Route exact path='/tradingbot' element={<BotDashboard/>}/>
-                      <Route exact path='/lists' element={<DashList/>}/>
-                      <Route exact path='/CryptoCurrenciesAnalysis' element={<CryptoAnalysis/>}/>
-                      <Route path="/group" element={<Team />} />
-                      <Route path="/contacts" element={<Contacts />} />
-                      <Route path="/invoices" element={<Invoices />} />
-                      <Route path="/settings" element={<GeneralInfoForm/>}/>
-                    </Route>
+              <Routes >
+                <Route element={<PrivateRoute/>}>
+                  <Route element={<Layout />} style={{ minHeight: "100vh" }}>
+                    <Route exact path='/' element={<Dashboard/>}/>
+                    <Route exact path='/tradingbot' element={<BotDashboard/>}/>
+                    <Route exact path='/lists' element={<DashList/>}/>
+                    <Route exact path='/CryptoCurrenciesAnalysis' element={<CryptoAnalysis/>}/>
+                    <Route exact path='/cryptoHistory' element={<CryptoHistory/>}/>
                   </Route>
-                 
-                </Routes>
-
-            
+                </Route>               
+              </Routes>  
             </div>
-            
+          
             </AuthProvider>
           </BrowserRouter>
       </ThemeProvider>

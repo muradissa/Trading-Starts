@@ -81,13 +81,13 @@ const CryptoList = () => {
 
   return (
     <>
-      <Box m="20px" paddingBottom="40px" >
+      <Box m="20px"  paddingBottom="10px" >
         <Box display="flex" justifyContent="space-between"  alignItems="center" style={{maxWidth:"100%",margin:"0 auto"}}>
             <Header title="Cryptocurrency  list" subtitle="Top 50 Cryptocurrency now in the market" />
         </Box>
         <Box
           m="40px 0 0 0"
-          height="80vh"
+          height="70vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",

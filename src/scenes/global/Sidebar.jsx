@@ -155,7 +155,7 @@ const Sidebar = ({changeStatusMenu}) => {
             />
             <Item
               title="Crypto trading record"
-              to="/"
+              to="/cryptoHistory"
               icon={<SmartToyIcon />}
               selected={selected}
               setSelected={setSelected}
