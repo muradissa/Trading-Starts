@@ -8,6 +8,8 @@ import TopFiveCrypto from "../dashboardTables/TopFiveCrypto";
 import TopFiveStock from "../dashboardTables/TopFiveStock";
 import HighestCrypto from "../dashboardTables/HighestCrypto";
 import VwapChart from "../charts/VwapChart";
+import ProfitChart from "../charts/ProfitChart";
+import DealsChart from "../charts/DealsChart";
 import './dashboard.css'
 
 const ITEM_HEIGHT = 48;
@@ -47,7 +49,19 @@ const Dashboard = () =>{
                 {/* <PostBuy ></PostBuy> */}
                 {/* {Crypto} */}
                 <div className='container__top'>
-                  <div>
+                  <div style={{textAlign:"center",}}> 
+
+                    <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
+                    <ProfitChart/>
+
+                  </div>
+                  <div style={{textAlign:"center",}}> 
+                    <h3  style={{color:"#fff"}}>Stock</h3>
+                    <ProfitChart/>
+
+                  </div>
+                 
+                  {/* <div>
                     <div className='table__title' >
                         <h4 className='table__title text-buy' >Crypto | Buy</h4>
                     </div>
@@ -62,9 +76,9 @@ const Dashboard = () =>{
                     <div className="container__table-template">
                       <TopFiveCrypto/>
                     </div>
-                  </div>
+                  </div> */}
                   {/* {Stocks} */}
-                  <div>
+                  {/* <div>
                     <div className='table__title' >
                         <h4 className='table__title text-buy' >Stocks | Buy</h4>
                     </div>
@@ -79,7 +93,7 @@ const Dashboard = () =>{
                     <div className="container__table-template">
                       <TopFiveStock/>
                     </div>
-                  </div>
+                  </div> */}
                  
                   {/* <div>
                     <div className='table__title1' >
@@ -119,7 +133,31 @@ const Dashboard = () =>{
                     <VwapChart/>
                   </div> */}
                 </div>
-                 <div  className='container__top2'>
+                
+                <div className='container__top3'>
+                  <div className='container__top4'>
+                    <div>
+                      <h3 style={{textAlign:"center"}}><b style={{color:"green"}}>Successful</b> deals last week</h3>
+                      <DealsChart/>
+                    </div> 
+                    <div>
+                      <h3 style={{textAlign:"center"}}><b style={{color:"red"}}>Failed</b> deals last week</h3>
+                      <DealsChart/>
+                    </div>
+                  </div>
+                  <div className='container__top4'>
+                    <div>
+                      <h3 style={{textAlign:"center"}}><b style={{color:"green"}}>Successful</b> deals last week</h3>
+                      <DealsChart/>
+                    </div> 
+                    <div>
+                      <h3 style={{textAlign:"center"}}><b style={{color:"red"}}>Failed</b> deals last week</h3>
+                      <DealsChart/>
+                    </div>
+                  </div>
+                </div>
+                     
+                 {/* <div  className='container__top2'>
                   <div>
                       <div className='table__title1' >
                           <h4 className='table__title text-top-ten' >Top Ten Crypto</h4>
@@ -129,6 +167,7 @@ const Dashboard = () =>{
                       </div>
                     </div>
                  </div>
+                  */}
 
 
 

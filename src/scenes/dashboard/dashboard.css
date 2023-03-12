@@ -12,6 +12,22 @@
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
+.container__top3{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap:0.5rem;
+    /* margin-top: 2rem;*/
+    margin-bottom: 3rem; 
+    padding-right: 3rem;
+}
+.container__top4{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap:0.5rem;
+    /* margin-top: 2rem; */
+    margin-bottom: 2rem;
+    /* padding-right: 3rem; */
+}
 /**/
  .container__table-template {
     border-radius: 1rem;

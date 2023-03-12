@@ -27,10 +27,10 @@ export const options = {
     legend: {
       position: 'top' ,
     },
-    title: {
-      display: true,
-      text: 'Earn VS Loss',
-    },
+    // title: {
+    //   display: true,
+    //   text: 'Earn VS Loss',
+    // },
   },
 };
 
@@ -41,12 +41,14 @@ export const data = {
   datasets: [
     {
       label: 'Earn',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+      //data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+      data: [233,344,44,234,23,75,180,320],
+
       backgroundColor: 'rgba(30, 200, 30, 0.5)',
     },
     {
       label: 'Loss',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 200 })),
       backgroundColor: 'rgba(200, 30, 30, 0.5)',
     },
     

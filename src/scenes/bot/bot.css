@@ -1,7 +1,7 @@
 .container__bot{
     display: grid;
     grid-template-columns: 1fr;
-    padding:2rem;
+    /* padding:2rem; */
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
@@ -78,4 +78,18 @@ tr:hover {
     padding:2rem;
     margin-top: 2rem;
     margin-bottom: 3rem;
+}
+
+
+table tbody {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+table thead, table tbody tr {
+  display: table;
+  width: 100%;
+  overflow:hidden;
+  table-layout: fixed;
 }

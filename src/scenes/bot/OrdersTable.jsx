@@ -24,6 +24,24 @@ const OrdersTable = () => {
             </thead>
             <tbody>
                 <tr>
+                {/* coinPVComparing.map((rawData,index) =>{
+                            return(
+                               
+                                <tr>
+                                    <td style={{backgroundColor:'#3e4396'}}>{firstColumnPVT[index+1]}</td>
+                                    <td style={{color:changeTextColorPercentage(rawData['h1'])}}>{rawData['h1']}%</td>
+                                    <td>{rawData['h2']}%</td>
+                                    <td>{rawData['h3']}%</td>
+                                    <td>{rawData['h4']}%</td>
+                                    <td>{rawData['d1']}%</td>
+                                    <td>{rawData['d2']}%</td>
+                                    <td>{rawData['d3']}%</td>
+                                    <td>{rawData['d4']}%</td>
+                                    <td>{rawData['d5']}%</td>
+                                    <td>{rawData['d6']}%</td>
+                                </tr>
+                            )
+                        }) */}
                     <td>AAPP</td>
                     <td>Stock</td>
                     <td>20.6$</td>

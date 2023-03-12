@@ -39,7 +39,8 @@ function App() {
     <div className="main__container" style={{width:"100%"}}>
 
       <Sidebar changeStatusMenu={changeStatusMenu}/>
-      <main className="content" style={{paddingLeft:openMenu?"300px":"80px"}}>
+      {/** paddingRight:"3rem" */}
+      <main className="content" style={{paddingLeft:openMenu?"300px":"80px" }}>
         <Navbar/>
         {/* <Topbar /> */}
         <Outlet />
@@ -76,7 +77,7 @@ function App() {
                       <Route exact path='/' element={<Dashboard/>}/>
                       <Route exact path='/tradingbot' element={<BotDashboard/>}/>
                       <Route exact path='/lists' element={<DashList/>}/>
-                      <Route exact path='/analysis' element={<CryptoAnalysis/>}/>
+                      <Route exact path='/CryptoCurrenciesAnalysis' element={<CryptoAnalysis/>}/>
                       <Route path="/group" element={<Team />} />
                       <Route path="/contacts" element={<Contacts />} />
                       <Route path="/invoices" element={<Invoices />} />

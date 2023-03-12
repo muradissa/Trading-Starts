@@ -29,10 +29,10 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
             style={{
                 // color: colors.grey[200],
                 maxHeight: "40px",
-                color: selected !== title ? colors.primary[100] : colors.primary[100],
+                // color: selected !== title ? colors.primary[100] : "",
                 background: selected !== title ? undefined : colors.primary[900],
                 borderRadius:"15px",
-                hover: {background: colors.redAccent[800],color: colors.primary[100]},       
+                // hover: {background: colors.redAccent[800],color: colors.primary[200]},       
             }}
             onClick={() => setSelected(title)}
             icon={icon}
@@ -54,33 +54,43 @@ const Sidebar = ({changeStatusMenu}) => {
 
   // useEffect(() =>changeStatusMenu,isCollapsed)
   return (
-    <Box   width={isCollapsed ? "80px" : "300px"} background={colors.primary[400]}  sx={{
+    <Box   width={isCollapsed ? "80px" : "280px"} background={colors.primary[400]}  sx={{
         minHeight: "100vh",
         position: 'fixed',
         overflowX: 'hidden',
         zIndex:'1',
         
-        background: `${colors.primary[800]} !important`,
+        background: `${colors.primary[700]} !important`,
         "& .css-ewdv3l": {
           background: `${colors.primary[700]} !important`,
         },
         "& .MuiBox-root": {
           backgroundColor: "transparent !important",
         },
-        "& .ps-menuitem-root": {
+        "& .ps-menuitem-root .ps-menu-button": {
             maxHeight: "40px !important",
             borderRadius:"15px !important",
             backgroundColor: "transparent !important",
+            color:'#f0f0f0 !important',
+        },"& .ps-menu-button":{
+          // margin :"5px 5px"
         },
         "& .ps-menuitem-root:hover": {
-          color: `${colors.primary[200]} !important`,
+          color: `${colors.primary[100]} !important`,
+          //color:'#3e4396 !important',
           borderRadius:"15px !important", 
-          backgroundColor: `${colors.primary[800]} !important`, 
+          // backgroundColor: `${colors.primary[500]} !important`, 
+          background: `${colors.primary[500]} !important`, 
+          // backgroundColor:'#ff0000 !important'
+
         },
         "& .ps-menuitem-root.active": {
           color: "#868dfb !important",
           background: `${colors.grey[400]} !important`,
-        },  
+        },"& .ps-menu-button:hover":{
+           backgroundColor: `${colors.primary[500]} !important`, 
+
+        }
       }}>
       <ProSidebarProvider collapsed={isCollapsed} >
         <Menu iconShape="square" style={{paddingBottom:"10px"}} background="#fff">
@@ -108,9 +118,8 @@ const Sidebar = ({changeStatusMenu}) => {
                 }
               </Box>
             </Box>
-         
+         <Box  style={{ background:  colors.primary[700] , margin:isCollapsed?"10px 5px" :"10px 10px"}}>
           <MenuItem                     
-                style={{ background:  colors.primary[700]}}
                 onClick={() => {
                   setIsCollapsed(!isCollapsed)
                 }}
@@ -118,14 +127,14 @@ const Sidebar = ({changeStatusMenu}) => {
             >
             {!isCollapsed && <Typography>Menu</Typography>}        
           </MenuItem>
+         </Box>
+          
 
           <Box paddingTop="0px" paddingLeft={isCollapsed ? "5%" : "5%"} paddingRight={isCollapsed ? "5%" : "5%"} >
-            
-            
             <Divider/>
-            {/********** Crypto **********/}
+            {/********** Cryptocurrency  **********/}
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
-              Crypto
+              Crypto{isCollapsed ? "":'currencies'} 
             </Typography>
             <Item
               title="List"
@@ -135,38 +144,31 @@ const Sidebar = ({changeStatusMenu}) => {
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
-            {/* <Item
-              title="Tracking"
-              to="/"
-              icon={<QueryStatsIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            /> */}
+            
             <Item
               title="Analysis"
-              to="/analysis"
+              to="/CryptoCurrenciesAnalysis"
               icon={<LeaderboardIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
             <Item
-              title="Trading history"
+              title="Crypto trading record"
               to="/"
               icon={<SmartToyIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed} 
             />
-            <Item
+            {/* <Item
               title="Wallet"
               to="/"
               icon={<WalletOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed} 
-            />
+            /> */}
 
             <Divider/>
             {/********** Stocks **********/}
@@ -174,52 +176,31 @@ const Sidebar = ({changeStatusMenu}) => {
               Stocks
             </Typography>
              <Item
-              title="List2"
+              title=" List "
               to="/"
               icon={<ShowChartIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
-            {/* <Item
-              title="Tracking2"
-              to="/"
-              icon={<CurrencyExchangeIcon />}
+            <Item
+              title=" Analysis "
+              to="/StocksAnalysis"
+              icon={<LeaderboardIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
             />
             <Item
-              title="classification2"
+              title="Stock trading record"
               to="/"
-              icon={<CurrencyExchangeIcon />}
+              icon={<SmartToyIcon />}
               selected={selected}
               setSelected={setSelected}
-              isCollapsed={isCollapsed}
+              isCollapsed={isCollapsed} 
             />
+        
             
-            <Divider/> */}
-
-            {/********** data **********/}
-            {/* <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>      
-              Data
-            </Typography>
-            <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            />
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-              isCollapsed={isCollapsed}
-            /> */}
 
             {/* ******* Settings ****** */}
             <Divider/>

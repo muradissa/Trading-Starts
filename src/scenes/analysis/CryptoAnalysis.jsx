@@ -6,7 +6,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import LinearProgress from '@mui/material/LinearProgress';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import Header from "../../components/Header";
 function CryptoAnalysis() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -32,6 +32,9 @@ function CryptoAnalysis() {
     }, 500);
     // setLoading(!isLoading)
   };
+  function updateSetLoading() {
+    // setLoading(false)
+  }
 
   const columns = [
     {
@@ -89,8 +92,10 @@ function CryptoAnalysis() {
 
   return (
     <div>
-      <Box m="2rem" paddingLeft="">
-        {/* <Header title="change it later" subtitle="List of Invoice Balances" /> */}
+      <Box  m="20px">
+        <Box display="flex" justifyContent="space-between"  alignItems="center" style={{maxWidth:"100%",margin:"0 auto"}}>
+            <Header title="Cryptocurrency analysis" subtitle="Analysis of all cryptocurrencies (TPS & VWAP & AVG & Comparing)" />
+        </Box>
         <Box
           m="40px 0 0 0"
           height="60vh"
@@ -129,11 +134,11 @@ function CryptoAnalysis() {
             <CircularProgress style={{color:"white",scale:"1.5"}}/>
           </div>
           : 
-          <AnalysisOneCoin selectedCoin={selectedCoin}/>
+          <AnalysisOneCoin 
+            selectedCoin={selectedCoin}
+            />
         
-        }
-        
-        
+        }   
       </div>
     </div>
     

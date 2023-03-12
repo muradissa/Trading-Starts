@@ -61,6 +61,7 @@ function AnalysisOneCoin(props) {
         getCoinTablePVT();
         getCoinTablePVComparing();
         getCoinVWAP4815m();
+        
         const interval = setInterval(async () => {
             try{
                 const response1 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-price-tps/${props.selectedCoin}`);
@@ -70,9 +71,9 @@ function AnalysisOneCoin(props) {
                 const response3 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-15min/${props.selectedCoin}`);
                 const response4 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vt-comapring/${props.selectedCoin}`);
 
-                // if(response1.status === 200){
-                //     setPriceAndTPS(response1.data['result'])
-                // }
+                if(response1.status === 200){
+                    setPriceAndTPS(response1.data['result'])
+                }
                 if(response2.status === 200){
                     setCoinPVT(response2.data['result'])
                 }
