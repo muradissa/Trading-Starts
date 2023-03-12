@@ -72,6 +72,7 @@ function App() {
                     <Route exact path='/lists' element={<DashList/>}/>
                     <Route exact path='/CryptoCurrenciesAnalysis' element={<CryptoAnalysis/>}/>
                     <Route exact path='/cryptoHistory' element={<CryptoHistory/>}/>
+                    <Route exact path='/profile-settings' element={<GeneralInfoForm/>}/>
                   </Route>
                 </Route>               
               </Routes>  

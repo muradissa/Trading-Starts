@@ -10,7 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
 ChartJS.register(
   CategoryScale,
@@ -46,7 +45,7 @@ function VwapChart(props) {
     datasets: [
       {
         label: 'VWAP 48',
-        data: labels.map((temp,index) => props.coinVwap48Time15m[index]),
+        data: labels.map((temp,index) => props.coinVwap48[index]),
         borderColor: 'rgb(255, 220, 0)',
         backgroundColor: 'rgba(255, 220, 0, 0.5)',
       },

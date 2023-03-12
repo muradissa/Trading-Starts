@@ -1,14 +1,19 @@
 import React,{useState,useEffect} from 'react';
 import axios from "axios";
 import VwapChart from "../charts/VwapChart";
+import {tokens} from "../../theme";
+import {Typography , Box , useTheme} from "@mui/material";
 
 import './analysis.css';
 
 function AnalysisOneCoin(props) {
+    const theme = useTheme();
+    const colors = tokens(theme.palette.made);
     const [priceAndTPS, setPriceAndTPS] = useState([]);
     const [coinPVT, setCoinPVT] = useState([]);
     const [coinPVComparing, setCoinPVComparing] = useState([]);
     const [coinVwap48Time15m, setCoinVwap48Time15m] = useState([]);
+    const [coinVwap48Time1h, setCoinVwap48Time1h] = useState([]);
     const firstColumnPVT =['Price','Volume','Trades'];
     const [timer30Sec, setTimer30Sec] = useState(false);
     const [coinNAME, setcoinNAME] = useState(('BTCUSDT'));
@@ -31,6 +36,12 @@ function AnalysisOneCoin(props) {
         const response = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-15min/${props.selectedCoin}`);
         if(response.status === 200){
             setCoinVwap48Time15m(response.data['result'])
+        }
+    }
+    const getCoinVWAP481h = async () =>{
+        const response = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-1h/${props.selectedCoin}`);
+        if(response.status === 200){
+            setCoinVwap48Time1h(response.data['result'])
         }
     }
     const getCoinTablePVT = async () =>{
@@ -61,15 +72,16 @@ function AnalysisOneCoin(props) {
         getCoinTablePVT();
         getCoinTablePVComparing();
         getCoinVWAP4815m();
+        getCoinVWAP481h();
         
         const interval = setInterval(async () => {
             try{
                 const response1 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-price-tps/${props.selectedCoin}`);
-                // getCoinPriceAndTPS();
-
                 const response2 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-pvt-24h/${props.selectedCoin}`)
                 const response3 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-15min/${props.selectedCoin}`);
                 const response4 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vt-comapring/${props.selectedCoin}`);
+                const response5 = await axios.get(`http://localhost:5000/api/crypto/analysis/getcoin-vwap48-1h/${props.selectedCoin}`);
+
 
                 if(response1.status === 200){
                     setPriceAndTPS(response1.data['result'])
@@ -83,6 +95,9 @@ function AnalysisOneCoin(props) {
                 if(response4.status === 200){
                     setCoinPVComparing(response4.data['result'])
                 }
+                if(response5.status === 200){
+                    setCoinVwap48Time1h(response5.data['result'])
+                }
             }catch(err){
                 console.log("Error from getcoin Analysis");
             }
@@ -91,11 +106,6 @@ function AnalysisOneCoin(props) {
         return () => clearInterval(interval);
     }, []);
 
-    // useEffect(() =>{
-    //         getCoinPriceAndTPS();
-    //         getCoinTablePVT();
-    //         getCoinTablePVComparing();
-    // },[]); 
  
   return (
     <div className='container__analysis-coin'>
@@ -184,12 +194,18 @@ function AnalysisOneCoin(props) {
             </div>
         </div>
         <div className='container__charts-vwap-trades'>
-            <VwapChart coinVwap48Time15m={coinVwap48Time15m}/>
-            <VwapChart coinVwap48Time15m={coinVwap48Time15m}/>
-        </div>
-
-        <div> 
-            VWAP PRO
+            <div>
+                <VwapChart coinVwap48={coinVwap48Time15m}/>
+                <h3 style={{textAlign:"center",color:colors.grey[700],marginTop:"0" }}>
+                    VWAP 48 15min = <b style={{color:"yellow"}}>{coinVwap48Time15m[coinVwap48Time15m.length-1]}</b>
+                </h3> 
+            </div>
+            <div>
+                <VwapChart coinVwap48={coinVwap48Time1h} style={{background:colors.primary[300]}}/>
+                <h3 style={{textAlign:"center",color:colors.grey[700],marginTop:"0" }}>
+                    VWAP 48 1h = <b style={{color:"yellow"}}>{coinVwap48Time1h[coinVwap48Time15m.length-1]}</b>
+                </h3> 
+            </div>
         </div>
     </div>
   )

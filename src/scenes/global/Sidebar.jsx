@@ -1,8 +1,8 @@
-import { useState, } from "react";
+import React,{ useState, useContext} from "react";
 import { ProSidebarProvider , Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link,NavLink } from "react-router-dom";
-import { tokens } from "../../theme";
+import { ColorModeContext, tokens } from "../../theme";
 
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -21,10 +21,12 @@ import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
 const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
- 
+  const colorMode = useContext(ColorModeContext);
+  
   return (
     <NavLink to={to} >
         <MenuItem
+
             active={selected === title}
             style={{
                 // color: colors.grey[200],
@@ -34,8 +36,15 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
                 borderRadius:"15px",
                 // hover: {background: colors.redAccent[800],color: colors.primary[200]},       
             }}
-            onClick={() => setSelected(title)}
+            onClick={() => {
+              setSelected(title);
+              if(title ==='Dark/Light Theme'){
+                colorMode.toggleColorMode()
+
+              }
+            }}
             icon={icon}
+            
             // sx={{"& *:hover":{background:colors.grey[200]  }}}
             >
             {!isCollapsed &&
@@ -49,6 +58,8 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
 const Sidebar = ({changeStatusMenu}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const colorMode = useContext(ColorModeContext);
+  
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -209,7 +220,7 @@ const Sidebar = ({changeStatusMenu}) => {
             </Typography>
             <Item
               title="Profile"
-              to="/"
+              to="/profile-settings"
               icon={<AccountCircleIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -217,11 +228,13 @@ const Sidebar = ({changeStatusMenu}) => {
             />
             <Item
               title="Dark/Light Theme"
-              to="/"
+              // to="/"
+              
               icon={<DarkModeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
+              onClick={colorMode.toggleColorMode}
             />
             <Item
               title="Settings"
