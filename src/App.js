@@ -22,6 +22,7 @@ import BotDashboard from "./scenes/bot/BotDashboard";
 import CryptoHistory from "./scenes/bot/CryptoHistory";
 import CryptoAnalysis from "./scenes/analysis/CryptoAnalysis"
 
+import Home from "./Home/Home";
 
 
 function App() {
@@ -59,12 +60,14 @@ function App() {
                 <Routes>  
                   <Route path="/login" element={<Login/>} />
                   <Route path="/signup" element={<Signup />} />
+                  <Route path="/home" element={<Home />} />
                 </Routes>
               </div>
             </Container>
             
             <div className="app" > 
               <Routes >
+                {/* <Route path="/home" element={<Home />} /> */}
                 <Route element={<PrivateRoute/>}>
                   <Route element={<Layout />} style={{ minHeight: "100vh" }}>
                     <Route exact path='/' element={<Dashboard/>}/>
