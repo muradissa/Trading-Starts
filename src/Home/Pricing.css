@@ -1,0 +1,229 @@
+/* .pricing-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    animation: fadein 1s;
+  }
+  
+  .pricing-card {
+    width: 300px;
+    margin: 0 20px;
+    padding: 20px;
+    text-align: center;
+    background-color: #171f33;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s;
+  }
+  
+  .pricing-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .pricing-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pricing-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .pricing-price {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .pricing-features {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .pricing-features li {
+    margin-bottom: 10px;
+  }
+  
+  .pricing-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7e5bef;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+  
+  .pricing-button:hover {
+    background-color: #6242a3;
+  }
+  
+  .popular .pricing-title {
+    background-color: #7e5bef;
+    color: #fff;
+    padding: 10px 0;
+    margin-bottom: 20px;
+  }
+  
+  .popular .pricing-subtitle {
+    color: #7e5bef;
+  }
+  
+  .popular .pricing-price {
+    color: #7e5bef;
+  }
+  
+  .popular .pricing-button {
+    background-color: #6242a3;
+  }
+*/  
+  /* Animation */
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.pricing-container{
+    width: 100%;
+    margin: 15vh auto;
+}
+.pricing-container h2{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+  
+    @media (min-width: 768px) {
+      margin-bottom: 50px;
+    }
+}
+.pricing-container-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    
+}   
+  /* .pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    margin: 15vh auto;
+  } */
+  
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+    box-shadow: 0px 0px 10px rgba(68, 68, 68, 0.5);
+    background-color: rgba(16, 22, 36,0.7);
+    transition:0.3s;
+}
+.pricing-card:hover{
+    /* box-shadow: 0px 0px 10px rgba(68, 68, 68, 0.5); */
+    box-shadow: 0px 0px 10px rgba(107, 107, 107, 0.5);
+}
+.pricing-card.popular:hover{
+    /* box-shadow: 0px 0px 10px rgba(68, 68, 68, 0.5); */
+    box-shadow: 0px 0px 20px rgba(107, 107, 107, 0.5);
+}
+
+.pricing-card.popular {
+/* background-color: #ffffcc; */
+    border: 2px solid #ffc107;
+}
+
+.pricing-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+
+.pricing-subtitle {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pricing-price {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.pricing-features li {
+    margin-bottom: 10px;
+}
+
+.pricing-button {
+    /* background-color: #0099ff; */
+    background-color: #7e5bef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.pricing-button:hover {
+    /* background-color: #0066cc; */
+    background-color: #463482;
+
+}
+
+@media (max-width: 768px) {
+    .pricing-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-title {
+        font-size: 20px;
+    }
+
+    .pricing-subtitle {
+        font-size: 14px;
+    }
+
+    .pricing-price {
+        font-size: 28px;
+    }
+
+    .pricing-features li {
+        font-size: 14px;
+    }
+
+    .pricing-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

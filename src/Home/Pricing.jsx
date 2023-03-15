@@ -85,7 +85,7 @@ function PricingContent() {
         </Typography>
       </Container>
       {/* End hero unit */}
-      <Container maxWidth="md" component="main" sx={{ marginBottom:"30px"}}>
+      <Container maxWidth="md" component="main" sx={{ marginBottom:"100px"}}>
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
