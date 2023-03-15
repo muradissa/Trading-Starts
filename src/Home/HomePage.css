@@ -35,6 +35,7 @@
     width: 50%;
     margin-left: auto;
     padding: 60px;
+    animation: fadeIn 2s ease-in-out;
   }
   
   .home-page-title {
@@ -42,7 +43,7 @@
     font-weight: bold;
     margin-bottom: 1rem;
     color: #ffffff;
-    animation: fadeIn 2s ease-in-out;
+    /* animation: fadeIn 2s ease-in-out; */
 /* 
     animation: fadeInUp 1s ease; */
   }
@@ -51,7 +52,7 @@
     font-size: 2rem;
     margin-bottom: 3rem;
     color: #ffffff;
-    animation: fadeIn 2s ease-in-out;
+    /* animation: fadeIn 2s ease-in-out; */
     /* animation: fadeInUp 1s 0.5s ease; */
   }
   
@@ -64,7 +65,7 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    animation: fadeIn 2s ease-in-out;
+    /* animation: fadeIn 2s ease-in-out; */
     /* animation: fadeInUp 1s 1s ease; */
   }
   

@@ -44,7 +44,7 @@
     /* background: -webkit-linear-gradient(#eee, #333); */
     background: -webkit-linear-gradient(#fff700, #6e6e6e);
 
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     -webkit-text-fill-color: transparent;
     margin: 0;
     animation: bounce 1s ease-in-out;
