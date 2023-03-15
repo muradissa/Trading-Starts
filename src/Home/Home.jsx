@@ -7,6 +7,7 @@ import NavbarHome from "./NavbarHome"
 import HomePage from './HomePage';
 import AboutTradingStars from './AboutTradingStars'
 import Pricing from './Pricing';
+import Footer2 from './footer2';
 function Home() {
   return (
     <div className='container__home'>
@@ -17,7 +18,8 @@ function Home() {
         <AboutBot/>
         <Features/>
         <Pricing/>
-        <FooterHome/>
+        {/* <FooterHome/> */}
+        <Footer2/>
     </div>
   )
 }

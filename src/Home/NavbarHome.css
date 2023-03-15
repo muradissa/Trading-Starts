@@ -41,7 +41,7 @@
     }
   
     .nav-link:hover {
-      border-bottom:3px solid #ffc107; 
+      border-bottom:3px solid rgb(255, 193, 7); 
     }
   
     .navbar-right {
