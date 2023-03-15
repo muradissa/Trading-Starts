@@ -1,50 +1,54 @@
-
-import React from 'react';
-import './footerHome.css';
+import React from "react";
+import "./footerHome.css";
+// import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-// import logo from '../assets/logo-no-background.png';
 
-function FooterHome() {
+const FooterHome = () => {
   return (
+    <>
     <footer className="footer">
-      <div className="footer__container">
-        <div className="footer__column">
-          <img src="../assets/logo-no-background.png" alt="Logo" className="footer__logo" />  
-        </div>
-
-        <div className="footer__column">
-          <div className='footer__row'>
-             <a>Email : tradingStars@gmail.com</a>
-             
-          </div>
-         
-        </div>
-        <div className="footer__column">
-          <div className='footer__row' style={{}}>
-            {/* style={{display: "contents",gap:"1rem"}} */}
-            <a> <InstagramIcon/> </a>
-            <a> <FacebookIcon/> </a>
-            <a> <TwitterIcon/> </a>
-            <a> <LinkedInIcon/> </a>
-          </div>
-          {/* display: contents; 
-              display: flex; 
-              gap: 1rem;
-              margin: auto;
-              right: 0; 
-              padding-right: 2rem; 
-              position: absolute; 
-          */}
-        </div>
+      <div className="footer-left">
+        <img src="../assets/logo-no-background.png" alt="Logo" className="footer-logo" />
       </div>
-      <div className="footer__bottom">
-        <p className="footer__text">&copy; 2023 TradingStars. All rights reserved. <a href="#">Terms</a></p>
+      <div className="footer-middle">
+        <h3>Contact Us</h3>
+        <p>Email: tradingStars@gmail.com</p>
       </div>
+      <div className="footer-right">
+        <h3>Follow Us</h3>
+        <ul className="social-icons">
+          <li>
+            <a href="#">
+              <FacebookIcon />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <TwitterIcon />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <LinkedInIcon />
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <InstagramIcon />
+            </a>
+          </li>
+        </ul>
+      </div>
+      
     </footer>
+    <div className="footer-copyright">
+      <p>&copy; 2023 TradingStars</p>
+    </div>
+    </>
   );
-}
+};
 
 export default FooterHome;
