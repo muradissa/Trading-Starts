@@ -23,9 +23,9 @@
     background: rgba(16, 22, 36,1);
 }
 
-.slick-slide {
+/* .slick-slide {
     transition: all ease-in-out 2.8s;
-}
+} */
     
 .slick-current {
       transform: scale(1.1);
@@ -49,7 +49,7 @@
     color: white;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .container__slider-images2 {
         flex-direction: column;
     }

@@ -1,0 +1,124 @@
+    .contact-us-title{
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-align: center;
+    
+        @media (min-width: 768px) {
+        margin-bottom: 50px;
+        }
+    }
+   .contact-us-container {
+    display: flex;
+    flex-direction: row;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 10%;
+    padding-top: 3rem;
+    /* background-color: #f2f2f2; */
+  }
+  
+  .contact-us-left {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+  }
+  
+  .contact-us-left img {
+    
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 50%;
+  }
+  
+  .contact-us-right {
+    width: 45%;
+  }
+  
+  .contact-us-right h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    display: flex;
+    /* flex-direction: column; */
+    flex-direction: row;
+
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    width: 25%;
+    padding:0;
+    margin-bottom: 0.5rem;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 75%;
+    padding: 0.1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #f2f2f2;
+    /* margin-right: 0; */
+  }
+textarea{  
+    max-lines: 5;
+}
+
+.contact-us-container button[type="submit"] {
+    background-color: #7e5bef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 1rem;
+}
+  .contact-us-container button[type="submit"]:hover {
+    background-color: #463482;
+}
+  
+@media only screen and (max-width: 1000px) {
+    .contact-us-container {
+        flex-direction: column;
+    }
+  
+    .contact-us-left {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 5%;
+        display:none;
+    }
+  
+    .contact-us-right {
+      width: 80%;
+    }
+    .form-group {
+        flex-direction: column;
+    }
+    .form-group label {
+        width: 100%;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea{
+        padding: 10px;
+        width: 100%;
+    }
+}

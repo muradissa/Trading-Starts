@@ -6,6 +6,7 @@ import NavbarHome from "./NavbarHome"
 import HomePage from './HomePage';
 import AboutTradingStars from './AboutTradingStars'
 import Pricing from './Pricing';
+import ContactUs from './ContactUs';
 function Home() {
   return (
     <div className='container__home'>
@@ -15,7 +16,7 @@ function Home() {
         <AboutBot/>
         <Features/>
         <Pricing/>
-       
+        <ContactUs/>
         <FooterHome/>
     </div>
   )
