@@ -254,7 +254,7 @@ const FeatureDescription = styled.p`
   text-align: center;
 `;
 
-const AboutUs = () => {
+const AboutBot = () => {
   const titleAnimation = useSpring({ 
     from: { opacity: 0, transform: 'translateY(-50px)' },
     to: { opacity: 1, transform: 'translateY(0px)' },
@@ -300,7 +300,7 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default AboutBot;
 
 
 

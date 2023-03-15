@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './slider2.css';
+import './aboutTradingStars.css';
 
 const images = [
     {id:1 , url:"../assets/cryptolist.jpg"},

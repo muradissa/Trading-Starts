@@ -1,6 +1,6 @@
 
 import React from 'react';
-import './footer.css';
+import './footerHome.css';
 import DeveloperModeOutlinedIcon from '@mui/icons-material/DeveloperModeOutlined';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
