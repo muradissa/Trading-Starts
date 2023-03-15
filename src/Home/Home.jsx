@@ -14,13 +14,9 @@ function Home() {
   return (
     <div className='container__home'>
         <NavbarHome/>
-        {/* <h2>Welcome to TradingStars</h2>
-        <h2>Logo</h2> */}
-        {/* <Firstsection/> */}
-        {/* <SecondSection/> */}
+
         <HomePage/>
         <AboutTradingStars/>
-        {/* <SliderComponent/> */}
         <AboutUs/>
         <Features/>
         {/* <Pricing/> */}

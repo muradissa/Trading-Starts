@@ -24,8 +24,6 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    
-    /* z-index: 0; */
   }
   
   .home-page-content {
@@ -43,17 +41,12 @@
     font-weight: bold;
     margin-bottom: 1rem;
     color: #ffffff;
-    /* animation: fadeIn 2s ease-in-out; */
-/* 
-    animation: fadeInUp 1s ease; */
   }
   
   .home-page-subtitle {
     font-size: 2rem;
     margin-bottom: 3rem;
     color: #ffffff;
-    /* animation: fadeIn 2s ease-in-out; */
-    /* animation: fadeInUp 1s 0.5s ease; */
   }
   
   .home-page-subscribe-button {
@@ -65,8 +58,6 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    /* animation: fadeIn 2s ease-in-out; */
-    /* animation: fadeInUp 1s 1s ease; */
   }
   
   .home-page-subscribe-button:hover {
