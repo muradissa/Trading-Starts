@@ -16,7 +16,8 @@ function HomePage() {
             <h1 className="home-page-title">Welcome!</h1>
             {/* <h1 className="title">Welcome to Our Website!</h1> */}
             <p className="home-page-subtitle">Sign up today to join the stars of the trading world and take your trading to the next level.</p>
-            <button className="home-page-subscribe-button">Subscribe Now</button>
+            {/* <button className="home-page-subscribe-button">Subscribe Now</button> */}
+            <button className="home-page-subscribe-button">Start trading now!</button>
           </div>
         </div>
     );

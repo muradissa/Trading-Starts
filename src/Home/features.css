@@ -34,7 +34,9 @@
     align-items: center;
     margin: 20px;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+    /* box-shadow: 0 0 10px rgba(255, 255, 0, 0.3); */
+    box-shadow: 0px 0px 10px rgba(107, 107, 107, 0.5);
+
     border-radius: 10px;
     height: 30vh;
     transition: transform 0.3s ease;
