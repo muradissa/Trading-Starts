@@ -8,7 +8,6 @@ import AboutTradingStars from './AboutTradingStars'
 import Pricing from './Pricing';
 import ContactUs from './ContactUs';
 import './home.css'
-import AboutBot2 from './AboutBot2';
 function Home() {
   return (
     <div className='container__home'>
@@ -17,8 +16,7 @@ function Home() {
         <HomePage/>
         <div className='container__home-sections'>        
           <AboutTradingStars/>
-          {/* <AboutBot/> */}
-          <AboutBot2/>
+          <AboutBot/>
           <Features/>
           <Pricing/>
           <ContactUs/>
