@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorModeContext, tokens } from "../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import './features.css'
 
