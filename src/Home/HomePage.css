@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #141b2d00, #141b2df0);
+    /* background: linear-gradient(to bottom, #141b2d00, #141b2df0); */
     /* background: linear-gradient(135deg, #00000000, #141b2df0); */
 
     z-index: 1;
@@ -71,4 +71,36 @@
         width: 100%;
         margin: auto auto;
     }
+}
+
+
+.moving-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.moving-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: moveImage 10s ease-in-out, rotateImage 2s linear forwards;
+}
+
+@keyframes moveImage {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, -100%);
+  }
+}
+
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

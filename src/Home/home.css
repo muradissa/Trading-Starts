@@ -1,0 +1,37 @@
+.container__home-sections{
+    margin: 0 10%;
+}
+
+.pr-btn{
+    background-color: #7e5bef;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.pr-btn:hover{
+    background-color: #463482;
+}
+
+.sec-btn{
+    /* background-color: whitesmoke; */
+    background-color:transparent;
+    color: #7e5bef;
+    border: 1px solid #7e5bef;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.sec-btn:hover{
+    border-color: #9a7ff3;
+    color:#9a7ff3;
+}

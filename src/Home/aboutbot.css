@@ -1,0 +1,82 @@
+.aboutbot-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px auto;
+  }
+  
+  .aboutbot-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .aboutbot-description {
+    font-size: 1.2rem;
+    max-width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: auto;
+  }
+
+  .aboutbot-feature-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .aboutbot-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 300px;
+  }
+  
+  
+  
+  .aboutbot-icon {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .aboutbot-feature-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .aboutbot-feature-description {
+    text-align: center;
+  }
+
+
+@media (min-width: 1024px) {
+    .aboutbot-feature {
+      width: 300px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .aboutbot-description {
+      margin-bottom: 50px;
+    }
+    .aboutbot-feature {
+        margin-bottom: 50px;
+        width: 350px;
+    }
+    .aboutbot-title {
+        margin-bottom: 50px;
+    }
+    .aboutbot-wrapper {
+        /* align-items: center; */
+      margin: 100px 0;
+    }
+    .aboutbot-icon {
+        width: 100px;
+      }
+}

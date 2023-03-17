@@ -50,8 +50,10 @@ const NavbarHome = () => {
       </div>
       <div className="navbar-right">
        
-            <button className="btn btn-primary"><b>Login</b></button>
-            <button className="btn btn-secondary"><b>Signup</b></button>
+            {/* <button className="btn btn-primary"><b>Login</b></button>
+            <button className="btn btn-secondary"><b>Signup</b></button> */}
+            <button className="sec-btn"><b>Login</b></button>
+            <button className="pr-btn"><b>Signup</b></button>
           
         {/* <button className="btn btn-primary"><b>Login</b></button>
         <button className="btn btn-secondary"><b>Signup</b></button> */}
