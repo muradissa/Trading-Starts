@@ -1,0 +1,160 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* margin-top: 50px; */
+    padding-top: 50px;
+    height: 100vh;
+    z-index: 2;
+  }
+  
+  .login-form-container .illustration {
+    width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  
+  .login-form-box{
+    z-index: 2;
+    margin: auto auto ;
+    padding: 3rem;
+    background-color: rgba(16, 22, 36,1);;
+    border-radius: 1rem;
+  }
+
+  .login-form-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .login-form-container form{
+    margin-bottom: 10px;
+  }
+  
+  
+  .login-form-container label {
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+  
+  .login-form-container input {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(126, 91, 239,0);
+    
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .login-form-container button {
+   margin-top: 2rem;
+  }
+  .login-texts-a{
+    padding: 5px;
+    text-align: center;
+  }
+  .login-forgot-password{
+    margin-top:3rem;
+    padding-top:2rem;
+  }
+  .login-texts-a a{
+    padding: 5px;
+    color:rgb(126, 91, 239);
+  }
+  .login-form-container input:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgb(255, 166, 0);
+    border: 3px solid rgb(126, 91, 239);
+  }  
+
+
+  .login-form-container button:focus {
+    outline: none;
+  }
+  
+  .login-form-container button.loading {
+    background-color: #9b9b9b;
+    pointer-events: none;
+  }
+  
+  .login-form-container button.loading::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* New styles for verification code field */
+  .login-form-container label[for='verificationCode'] {
+    display: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .login-form-container input[name='verificationCode'] {
+    display: none;
+  }
+  
+  /* Show verification code field when necessary */
+  .login-form-container form.show-verification label[for='verificationCode'] {
+    display: block;
+  }
+  
+  .login-form-container form.show-verification input[name='verificationCode'] {
+    display: block;
+  }
+  
+  /* Animations for showing/hiding verification code field */
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  .login-form-container form.show-verification label[for='verificationCode'] {
+    animation: slide-down 0.3s ease-in-out forwards;
+  }
+  
+  .login-form-container form.hide-verification label[for='verificationCode'] {
+    animation: slide-up 0.3s ease-in-out forwards;
+  }
+  
+  .login-form-container form.show-verification input[name='verificationCode'] {
+    animation: slide-down 0.3s ease-in-out forwards 0.1s;
+  }
+  
+  .login-form-container form.hide-verification input[name='verificationCode'] {
+    animation: slide-up 0.3s ease-in-out forwards 0.1s;
+  }
+  

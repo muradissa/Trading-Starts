@@ -11,7 +11,7 @@ import './home.css'
 function Home() {
   return (
     <div className='container__home'>
-        <NavbarHome/>
+        {/* <NavbarHome/> */}
         <HomePage/>
         <div className='container__home-sections'>        
           <AboutTradingStars/>
@@ -20,7 +20,7 @@ function Home() {
           <Pricing/>
           <ContactUs/>
         </div>
-        <FooterHome/>
+        {/* <FooterHome/> */}
     </div>
   )
 }

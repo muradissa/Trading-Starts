@@ -64,9 +64,9 @@
     margin-bottom: 0.5rem;
   }
   
-  input[type="text"],
-  input[type="email"],
-  textarea {
+  .contact-us-container input[type="text"],
+  .contact-us-container input[type="email"],
+  .contact-us-container textarea {
     width: 75%;
     padding: 0.1rem;
     font-size: 1.2rem;
@@ -75,7 +75,7 @@
     background-color: #f2f2f2;
     /* margin-right: 0; */
   }
-textarea{  
+  .contact-us-container textarea{  
     max-lines: 5;
 }
 
@@ -111,15 +111,15 @@ textarea{
     .contact-us-right {
       width: 80%;
     }
-    .form-group {
+    .contact-us-container .form-group {
         flex-direction: column;
     }
     .form-group label {
         width: 100%;
     }
-    input[type="text"],
-    input[type="email"],
-    textarea{
+    .contact-us-container input[type="text"],
+    .contact-us-container input[type="email"],
+    .contact-us-container textarea{
         padding: 10px;
         width: 100%;
     }
