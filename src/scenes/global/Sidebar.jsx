@@ -1,8 +1,9 @@
 import React,{ useState, useContext} from "react";
 import { ProSidebarProvider , Menu, MenuItem } from 'react-pro-sidebar';
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link,NavLink } from "react-router-dom";
+import { Link,NavLink,useNavigate } from "react-router-dom";
 import { ColorModeContext, tokens } from "../../theme";
+import { useAuth } from "../../contexts/AuthContext"
 
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -22,7 +23,16 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
-  
+  const { logout } = useAuth()
+  // const handleLogout = ()=>{
+  //   console.log("logout")
+    
+  //   // navigate("/")  
+  // }
+
+  if(selected === title && title==="Logout"){
+    logout()
+  }
   return (
     <NavLink to={to} >
         <MenuItem
@@ -59,10 +69,17 @@ const Sidebar = ({changeStatusMenu}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate ()
   
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
+  const { logout } = useAuth()
+  const handleLogout = ()=>{
+    console.log("logout")
+    logout()
+    navigate("/")  
+  }
   // useEffect(() =>changeStatusMenu,isCollapsed)
   return (
     <Box   width={isCollapsed ? "80px" : "280px"} background={colors.primary[400]}  sx={{
@@ -245,12 +262,13 @@ const Sidebar = ({changeStatusMenu}) => {
               isCollapsed={isCollapsed}
             />
             <Item
-              title="Login / Logout"
-              to="/invoices"
+              title="Logout"
+              // to="/"
               icon={<Logout />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
+              onClick={handleLogout}
             />
           </Box>
         </Menu>

@@ -89,7 +89,6 @@ function App() {
                   </Route>
               </Routes>  
             </div>
-            
             <div className="app" > 
               <Routes >
                 <Route element={<PrivateRoute/>}>
