@@ -13,7 +13,7 @@ function SignupStep3() {
   return (
     <div className="signup-form-box1"> 
       <div className="signup-form-box2">
-          <h4>Enter the code that you revied in your email :</h4>
+          <h4>Enter the code that you recevied in your email :</h4>
             <TextField
             id="filled-password-code"
             label="Code"

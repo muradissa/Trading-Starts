@@ -30,12 +30,22 @@ function SignupStep1() {
 
     }
   }
+  
   function isEmailValid(email) {
     // Regular expression to validate email address format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-   
+
+  function isNumeric(str) {   
+    if (str == null || str.length === 0) 
+      return false;  
+    for (let i = 0; i < str.length; i++) 
+      if (isNaN(parseInt(str[i]))) 
+        return false;   
+    return true;
+  }
+
   const checkPasswords = () =>{
     if(formPassword1 === formPassword2)   
       if(containsNumbers(formPassword1))  
