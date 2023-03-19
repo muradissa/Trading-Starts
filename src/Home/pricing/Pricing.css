@@ -1,6 +1,8 @@
 .pricing-container{
     width: 100%;
-    margin: 15vh auto;
+    margin: 0 auto;
+    /* margin-bottom: 0; */
+    padding-top: 15vh;
 }
 
 .pricing-container h2{

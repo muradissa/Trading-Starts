@@ -6,7 +6,7 @@ import "./HomePage.css";
 // import {IMG} from "../assets/stars_design.png";
 function HomePage() {
     return (
-      <>
+      <section id='home'>
         {/* <div class="moving-image-container">
             <img src="../assets/ETH-icon.png" alt="Moving image" class="moving-image"/>
         </div> */}
@@ -29,7 +29,7 @@ function HomePage() {
           
         </div>
         <HomeBackground/>
-        </>
+        </section>
     );
 }
 
