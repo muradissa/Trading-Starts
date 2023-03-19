@@ -92,34 +92,44 @@ export default function Signup2() {
               {activeStep === 0 && <SignupStep1/>}
               {activeStep === 1 && <SignupStep2/>}
               {activeStep === 2 && <SignupStep3/>}
-              <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
+              {/* <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
                 Step {activeStep + 1}
-              </Typography>
+              </Typography> */}
               <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                <Button
+                <button
                   color="inherit"
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  sx={{ mr: 1 }}
+                  className="sec-btn"
                 >
                   Back
-                </Button>
+                </button>
                 <Box sx={{ flex: '1 1 auto' }} />
-                <Button onClick={handleNext} sx={{ mr: 1,color:"#fff" }}>
+                 {completedSteps() !== totalSteps() - 1 && 
+                    <button onClick={handleComplete} className="sec-btn">
+                      Next
+                    </button>
+                  }
+                {/* <button onClick={handleNext} className="sec-btn">
                   Next
-                </Button>
-                {activeStep !== steps.length &&
+                </button> */}
+                {/* {activeStep !== steps.length &&
                   (completed[activeStep] ? (
                     <Typography variant="caption" sx={{ display: 'inline-block',color:"#fff" }}>
                       Step {activeStep + 1} already completed
                     </Typography>
                   ) : (
-                    <Button onClick={handleComplete}>
+                    <button onClick={handleComplete} className="sec-btn"> 
                       {completedSteps() === totalSteps() - 1
                         ? 'Finish'
-                        : 'Complete Step'}
-                    </Button>
-                  ))}
+                        : 'Complete '}
+                    </button>
+                  ))} */}
+                  {completedSteps() === totalSteps() - 1 && 
+                    <button onClick={handleComplete} className="sec-btn"> 
+                       Finish
+                    </button>
+                  }
               </Box>
             </React.Fragment>
           )}

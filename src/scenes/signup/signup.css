@@ -63,3 +63,14 @@
     margin: 0 0;
     padding: 0 0;
 }
+
+.MuiStepLabel-horizontal{
+    /* #7e5bef */
+    background-color:blueviolet;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.signup-form-container2 .MuiInputLabel-formControl{
+    width: 100%;
+}
