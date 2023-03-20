@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <>
     <nav className='navbar__top '>
-      <Link to='/' className='navbar__top-item'>
+      <Link to='/dashboard' className='navbar__top-item'>
           <a  className={activeNav==='#' ?'active ':''} onClick={() => setActiveNav('#')}>
             <AiOutlineHome style={{margin:'auto auto'}}/>Home
           </a>
@@ -23,12 +23,12 @@ const Navbar = () => {
           <FaRobot style={{margin:'auto auto'}}/>Bot
         </a>
       </Link>
-      <Link to='/'>
+      <Link to='/dashboard'>
         <a href='#experience' className={activeNav==='#experience' ?'active ':''} onClick={() => setActiveNav('#experience')}>
           <CgTrack style={{margin:'auto auto'}}/>Tracking
         </a>
       </Link>
-      <Link to='/'>
+      <Link to='/dashboard'>
         <a href='#contact' className={activeNav==='#contact' ?'active ':''} onClick={() => setActiveNav('#contact')}>
           <TbMapSearch style={{margin:'auto auto'}}/>Trading Map
         </a>
