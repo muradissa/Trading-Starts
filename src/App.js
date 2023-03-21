@@ -1,9 +1,9 @@
 import { useState } from "react";
 import React, { Fragment } from 'react';
 import { BrowserRouter ,Routes, Route,Navigate, Outlet } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
+// import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
-import Navbar from "./scenes/global/Navbar";
+// import Navbar from "./scenes/global/Navbar";
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
@@ -67,7 +67,7 @@ function App() {
         <CssBaseline/>
         <BrowserRouter>
           <AuthProvider>
-            <Container
+            {/* <Container
               className="d-flex align-items-center justify-content-center"
               style={{ minHeight: "000vh" }}
             >
@@ -75,10 +75,9 @@ function App() {
                 <Routes>  
                   <Route path="/login1" element={<Login/>} />
                   <Route path="/signup1" element={<Signup />} />
-                  {/* <Route path="/home" element={<Home />} /> */}
                 </Routes>
               </div>
-            </Container>
+            </Container> */}
 
             <div className="" > 
               <Routes >

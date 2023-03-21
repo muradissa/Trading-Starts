@@ -45,12 +45,12 @@
     font-size: 2rem;
   }
   
-  form {
+  .contact-us-container  form {
     display: flex;
     flex-direction: column;
   }
   
-  .form-group {
+  .contact-us-container .form-group {
     display: flex;
     /* flex-direction: column; */
     flex-direction: row;
@@ -58,7 +58,7 @@
     margin-bottom: 1rem;
   }
   
-  label {
+  .contact-us-container label {
     font-size: 1.2rem;
     width: 25%;
     padding:0;

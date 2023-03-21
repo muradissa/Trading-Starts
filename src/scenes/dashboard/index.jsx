@@ -1,4 +1,6 @@
-import * as React from 'react';
+import  React ,{useState,useEffect}from 'react';
+import axios from "axios";
+
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
@@ -12,6 +14,7 @@ import ProfitChart from "../charts/ProfitChart";
 import DealsChart from "../charts/DealsChart";
 import './dashboard.css'
 import { AreaChart } from '../charts/AreaChart';
+import StrategyRadioGroup from './StrategyRadioGroup';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -38,25 +41,51 @@ function getStyles(name, personName, theme) {
 const Dashboard = () =>{
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const [strategy,setStrategy] = useState(1);
+    const [ordersLastWeek,setOrdersLastWeek] = useState(1);
+    
+    const today = new Date();
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // for (let i = 6; i >= 0; i--) {
+    //   const date = new Date(today);
+    //   date.setDate(today.getDate() - i);
+    //   const dayName = days[date.getDay()];
+    //   console.log(dayName);
+    // }
+
+    const chooseStrategy = (num)=>{
+      setStrategy(num)
+    }
+
+    const getOrdersLastWeek = async()=>{
+      const response1 = await axios.get(`http://localhost:5000/api/crypto/dashboard/getOrdersLastWeek/${strategy}`);
+          if(response1.status === 200){
+            setOrdersLastWeek(response1.data['result'])
+            console.log(response1.data['result'])
+          }  
+    }
+    useEffect(() => {
+      // const response1 = await axios.get(`http://localhost:5000/api/crypto/dashboard/getOrdersLastWeek/${strategy}`);
+      //     if(response1.status === 200){
+      //       setOrdersLastWeek(response1.data['result'])
+      //       console.log(response1.data['result'])
+      //     }  
+      getOrdersLastWeek()
+    },[strategy])
 
     return (
         <Box m="20px" >
             <Box display="flex" justifyContent="space-between"  alignItems="center" style={{maxWidth:"100%",margin:"0 auto"}}>
                 <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
             </Box>
-
+            <Box display="flex" justifyContent="space-between"  style={{maxWidth:"",margin:"0 auto"}}>
+              <StrategyRadioGroup chooseStrategy={chooseStrategy}/>
+            </Box>
+            
          
             <Box style={{maxWidth:"100%"}}>
-                {/* <div className='container__top'>
-                  <div style={{textAlign:"center",}}> 
-                    <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
-                    <ProfitChart/>
-                  </div>
-                  <div style={{textAlign:"center",}}> 
-                    <AreaChart/>
-                  </div>
-                </div> */}
-                
+               
                 <div className='container__top3'>
                   <div style={{textAlign:"center",}}> 
                     <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
@@ -74,7 +103,7 @@ const Dashboard = () =>{
                   </div>
                 </div>
                 <div className='container__top3'>
-                <div style={{textAlign:"center",}}> 
+                  <div style={{textAlign:"center",}}> 
                     <AreaChart/>
                   </div>
                   <div className='container__top4'>
