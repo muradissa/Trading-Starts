@@ -11,6 +11,7 @@ import VwapChart from "../charts/VwapChart";
 import ProfitChart from "../charts/ProfitChart";
 import DealsChart from "../charts/DealsChart";
 import './dashboard.css'
+import { AreaChart } from '../charts/AreaChart';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -46,97 +47,23 @@ const Dashboard = () =>{
 
          
             <Box style={{maxWidth:"100%"}}>
-                {/* <PostBuy ></PostBuy> */}
-                {/* {Crypto} */}
-                <div className='container__top'>
+                {/* <div className='container__top'>
                   <div style={{textAlign:"center",}}> 
-
                     <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
                     <ProfitChart/>
-
                   </div>
                   <div style={{textAlign:"center",}}> 
-                    <h3  style={{color:"#fff"}}>Stock</h3>
-                    <ProfitChart/>
-
+                    <AreaChart/>
                   </div>
-                 
-                  {/* <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-buy' >Crypto | Buy</h4>
-                    </div>
-                    <div className="container__table-template">
-                      <TopFiveCrypto/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-sell' >Crypto | SELL</h4>
-                    </div>
-                    <div className="container__table-template">
-                      <TopFiveCrypto/>
-                    </div>
-                  </div> */}
-                  {/* {Stocks} */}
-                  {/* <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-buy' >Stocks | Buy</h4>
-                    </div>
-                    <div className="container__table-template">
-                      <TopFiveStock/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-sell' >Stocks | SELL</h4>
-                    </div>
-                    <div className="container__table-template">
-                      <TopFiveStock/>
-                    </div>
-                  </div> */}
-                 
-                  {/* <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Stock 24h</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Crypto <b>1h</b></h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Stock 24h</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div>   */}
-                   
-                  {/* <div>
-                    <VwapChart/>
-                  </div>
-                  <div>
-                    <VwapChart/>
-                  </div>
-                  <div>
-                    <VwapChart/>
-                  </div>
-                  <div>
-                    <VwapChart/>
-                  </div> */}
-                </div>
+                </div> */}
                 
                 <div className='container__top3'>
+                  <div style={{textAlign:"center",}}> 
+                    <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
+                    <ProfitChart/>
+                  </div>
                   <div className='container__top4'>
-                    <div>
+                  <div>
                       <h3 style={{textAlign:"center"}}><b style={{color:"green"}}>Successful</b> deals last week</h3>
                       <DealsChart/>
                     </div> 
@@ -144,6 +71,11 @@ const Dashboard = () =>{
                       <h3 style={{textAlign:"center"}}><b style={{color:"red"}}>Failed</b> deals last week</h3>
                       <DealsChart/>
                     </div>
+                  </div>
+                </div>
+                <div className='container__top3'>
+                <div style={{textAlign:"center",}}> 
+                    <AreaChart/>
                   </div>
                   <div className='container__top4'>
                     <div>

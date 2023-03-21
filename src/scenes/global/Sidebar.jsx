@@ -18,7 +18,12 @@ import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import DeveloperModeOutlinedIcon from '@mui/icons-material/DeveloperModeOutlined';
 import WalletOutlinedIcon from '@mui/icons-material/WalletOutlined';
-
+import HomeIcon from '@mui/icons-material/Home';
+import {FaRobot} from "react-icons/fa";
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
+import MapIcon from '@mui/icons-material/Map';
+import HistoryIcon from '@mui/icons-material/History';
+// AiOutlineHome FaRobot CgTrack TbMapSearch
 const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -41,10 +46,12 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
             style={{
                 // color: colors.grey[200],
                 maxHeight: "40px",
+                
                 // color: selected !== title ? colors.primary[100] : "",
-                background: selected !== title ? undefined : colors.primary[900],
+                background: selected !== title ? undefined : colors.primary[500],
                 borderRadius:"15px",
-                // hover: {background: colors.redAccent[800],color: colors.primary[200]},       
+                color:selected !== title ? "#f0f0f0" : colors.greenAccent[500],
+                //  hover: {background: colors.redAccent[800],color: colors.primary[200]},       
             }}
             onClick={() => {
               setSelected(title);
@@ -54,11 +61,9 @@ const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
               }
             }}
             icon={icon}
-            
-            // sx={{"& *:hover":{background:colors.grey[200]  }}}
             >
             {!isCollapsed &&
-                <Typography>{title}</Typography>
+                <Typography style={{fontSize:"16px"}}>{title}</Typography>
             }  
         </MenuItem>
     </NavLink>
@@ -96,21 +101,17 @@ const Sidebar = ({changeStatusMenu}) => {
           backgroundColor: "transparent !important",
         },
         "& .ps-menuitem-root .ps-menu-button": {
-            maxHeight: "40px !important",
-            borderRadius:"15px !important",
-            backgroundColor: "transparent !important",
-            color:'#f0f0f0 !important',
+            // maxHeight: "40px !important",
+            // borderRadius:"15px !important",
+            // backgroundColor: "transparent !important",
+            // color:'#f0f0f0 !important',
         },"& .ps-menu-button":{
           // margin :"5px 5px"
         },
         "& .ps-menuitem-root:hover": {
           color: `${colors.primary[100]} !important`,
-          //color:'#3e4396 !important',
           borderRadius:"15px !important", 
-          // backgroundColor: `${colors.primary[500]} !important`, 
-          background: `${colors.primary[500]} !important`, 
-          // backgroundColor:'#ff0000 !important'
-
+          background: `${colors.primary[700]} !important`, 
         },
         "& .ps-menuitem-root.active": {
           color: "#868dfb !important",
@@ -123,15 +124,12 @@ const Sidebar = ({changeStatusMenu}) => {
       <ProSidebarProvider collapsed={isCollapsed} >
         <Menu iconShape="square" style={{paddingBottom:"10px"}} background="#fff">
             {/* LOGO AND MENU ICON */}          
-            
          
             <Box mb="25px" padding="1.5rem 1rem 0rem 1.5rem " marginBottom="1rem" >
               <Box display="flex" justifyContent="" alignItems="center">
                 <img
                   alt="profile-user"
-                  // height="3rem"
                   height="40px"
-                  // width="100%"
                   src={`../../assets/logo-no-background1.png`}
                   style={{ cursor: "pointer"}}
                 />
@@ -146,7 +144,7 @@ const Sidebar = ({changeStatusMenu}) => {
                 }
               </Box>
             </Box>
-         <Box  style={{ background:  colors.primary[700] , margin:isCollapsed?"10px 5px" :"10px 10px"}}>
+         {/* <Box  style={{ background:  colors.primary[700] , margin:isCollapsed?"10px 5px" :"10px 10px"}}>
           <MenuItem                     
                 onClick={() => {
                   setIsCollapsed(!isCollapsed)
@@ -155,8 +153,9 @@ const Sidebar = ({changeStatusMenu}) => {
             >
             {!isCollapsed && <Typography>Menu</Typography>}        
           </MenuItem>
-         </Box>
+         </Box> */}
           
+           {/* AiOutlineHome FaRobot CgTrack TbMapSearch */}
 
           <Box paddingTop="0px" paddingLeft={isCollapsed ? "5%" : "5%"} paddingRight={isCollapsed ? "5%" : "5%"} >
             <Divider/>
@@ -164,6 +163,22 @@ const Sidebar = ({changeStatusMenu}) => {
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
               Crypto{isCollapsed ? "":'currencies'} 
             </Typography>
+            <Item
+              title="Home"
+              to="/dashboard"
+              icon={<HomeIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+            <Item
+              title="Bot"
+              to="/tradingbot"
+              icon={<SmartToyIcon  />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
             <Item
               title="List"
               to="/lists"
@@ -182,9 +197,27 @@ const Sidebar = ({changeStatusMenu}) => {
               isCollapsed={isCollapsed}
             />
             <Item
+              title="Tracking"
+              to="/dashboard"
+              icon={<LocationSearchingIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+            <Item
+              title="Trading Map"
+              to="/dashboard"
+              icon={<MapIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
+            />
+
+            
+            <Item
               title="Crypto trading record"
               to="/cryptoHistory"
-              icon={<SmartToyIcon />}
+              icon={<HistoryIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed} 
@@ -197,9 +230,11 @@ const Sidebar = ({changeStatusMenu}) => {
               setSelected={setSelected}
               isCollapsed={isCollapsed} 
             /> */}
+            
 
-            <Divider/>
+
             {/********** Stocks **********/}
+            {/* <Divider/>
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>
               Stocks
             </Typography>
@@ -226,7 +261,7 @@ const Sidebar = ({changeStatusMenu}) => {
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed} 
-            />
+            /> */}
         
             
 

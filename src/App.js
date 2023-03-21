@@ -53,7 +53,7 @@ function App() {
       <Sidebar changeStatusMenu={changeStatusMenu}/>
       {/** paddingRight:"3rem" */}
       <main className="content" style={{paddingLeft:openMenu?"300px":"80px" }}>
-        <Navbar/>
+        {/* <Navbar/> */}
         {/* <Topbar /> */}
         <Outlet />
       </main>
