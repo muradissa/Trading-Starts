@@ -15,62 +15,121 @@ import DealsChart from "../charts/DealsChart";
 import './dashboard.css'
 import { AreaChart } from '../charts/AreaChart';
 import StrategyRadioGroup from './StrategyRadioGroup';
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-
-
-function getStyles(name, personName, theme) {
-    return {
-        fontWeight:
-        personName.indexOf(name) === -1
-            ? theme.typography.fontWeightRegular
-            : theme.typography.fontWeightMedium,
-    };
-}
+import Loading from '../global/Loading';
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250,
+//     },
+//   },
+// };
+// function getStyles(name, personName, theme) {
+//     return {
+//         fontWeight:
+//         personName.indexOf(name) === -1
+//             ? theme.typography.fontWeightRegular
+//             : theme.typography.fontWeightMedium,
+//     };
+// }
 
 const Dashboard = () =>{
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const [isLoading,setIsLoading]=useState(true);
     const [strategy,setStrategy] = useState(1);
-    const [ordersLastWeek,setOrdersLastWeek] = useState(1);
-    
+    const [ordersLastWeek,setOrdersLastWeek] = useState([]);
+    const [earnOrdersLastWeek,setEarnOrdersLastWeek] = useState([]);
+    const [lossOrdersLastWeek,setLossOrdersLastWeek] = useState([]);
+    const [earnDealsLastWeek,setEarnDealsLastWeek] = useState([]);
+    const [lossDealsLastWeek,setLossDealsLastWeek] = useState([]);
+    const [sumOrderEanLoss,setSumOrdersEarnLoss] = useState([]);
+    const [sortingDays,setSortingDays]= useState([]);
+    const [sortingDays2,setSortingDays2]= useState([]);
+
     const today = new Date();
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    // for (let i = 6; i >= 0; i--) {
-    //   const date = new Date(today);
-    //   date.setDate(today.getDate() - i);
-    //   const dayName = days[date.getDay()];
-    //   console.log(dayName);
-    // }
 
     const chooseStrategy = (num)=>{
       setStrategy(num)
     }
 
+    const dataFillingToProfitChart = (data) =>{
+      let earnOrdersLastWeek2=[] ,lossOrdersLastWeek2=[];
+      let sum =0;
+      let sortDays=[]
+      data[0].earn.forEach(element => {
+        earnOrdersLastWeek2.push(element.profits)
+        sum+=element.profits;
+      });
+      earnOrdersLastWeek2.push(sum)
+      setEarnOrdersLastWeek(earnOrdersLastWeek2)
+
+      sum=0;
+      data[1].loss.forEach(element => {
+        lossOrdersLastWeek2.push(-1*(element.profits));
+        sum+= (-1*element.profits);
+      });
+      lossOrdersLastWeek2.push(sum)
+      setLossOrdersLastWeek(lossOrdersLastWeek2)
+
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const dayName = days[date.getDay()];
+        sortDays.push(dayName)
+        console.log(dayName);
+      }
+      sortDays.push("Total")
+      setSortingDays(sortDays)
+    }
+
+    const dataFillingToDealsCharts= (data) =>{
+      let earnDealsLastWeek2=[] ,lossDealsLastWeek2=[];
+      let sortDays=[]
+      data[0].earn.forEach(element => {
+        earnDealsLastWeek2.push(element.numOrder)
+      });
+      setEarnDealsLastWeek(earnDealsLastWeek2)
+      //
+      data[1].loss.forEach(element => {
+        lossDealsLastWeek2.push((element.numOrder));
+      });
+      setLossDealsLastWeek(lossDealsLastWeek2);
+      //
+      for (let i = 6; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+        const dayName = days[date.getDay()];
+        sortDays.push(dayName.slice(0, 2))
+      }
+      setSortingDays2(sortDays)
+      //
+      SumOrdersEarnLossLastWeek(earnDealsLastWeek2,lossDealsLastWeek2)
+    }
+
+    const SumOrdersEarnLossLastWeek = (earnDealsLastWeek2,lossDealsLastWeek2)=>{
+      let sumArr=[] ;
+      for (var i=0 ; i< 7 ; i++){
+        sumArr.push(earnDealsLastWeek2[i]+lossDealsLastWeek2[i])
+      }
+      setSumOrdersEarnLoss(sumArr)
+    }
+    
     const getOrdersLastWeek = async()=>{
       const response1 = await axios.get(`http://localhost:5000/api/crypto/dashboard/getOrdersLastWeek/${strategy}`);
-          if(response1.status === 200){
-            setOrdersLastWeek(response1.data['result'])
-            console.log(response1.data['result'])
-          }  
+      if(response1.status === 200){
+        setOrdersLastWeek(response1.data['result'])
+        dataFillingToProfitChart(response1.data['result'])
+        dataFillingToDealsCharts(response1.data['result'])
+      }
+      setIsLoading(false);
+
     }
     useEffect(() => {
-      // const response1 = await axios.get(`http://localhost:5000/api/crypto/dashboard/getOrdersLastWeek/${strategy}`);
-      //     if(response1.status === 200){
-      //       setOrdersLastWeek(response1.data['result'])
-      //       console.log(response1.data['result'])
-      //     }  
+      setIsLoading(true);
       getOrdersLastWeek()
     },[strategy])
 
@@ -83,96 +142,62 @@ const Dashboard = () =>{
               <StrategyRadioGroup chooseStrategy={chooseStrategy}/>
             </Box>
             
-         
+            {!isLoading && 
             <Box style={{maxWidth:"100%"}}>
                
                 <div className='container__top3'>
                   <div style={{textAlign:"center",}}> 
                     <h3 style={{color:"#fff"}}>Cryptocurrency</h3>
-                    <ProfitChart/>
+                    <ProfitChart earnData1={earnOrdersLastWeek} lossData1={lossOrdersLastWeek} labels={sortingDays}/>
                   </div>
                   <div className='container__top4'>
                   <div>
                       <h3 style={{textAlign:"center"}}><b style={{color:"green"}}>Successful</b> deals last week</h3>
-                      <DealsChart/>
+                      <DealsChart data2={earnDealsLastWeek} labels2={sortingDays2}/>
+
                     </div> 
                     <div>
                       <h3 style={{textAlign:"center"}}><b style={{color:"red"}}>Failed</b> deals last week</h3>
-                      <DealsChart/>
+                      <DealsChart data2={lossDealsLastWeek} labels2={sortingDays2}/>
                     </div>
                   </div>
                 </div>
                 <div className='container__top3'>
                   <div style={{textAlign:"center",}}> 
-                    <AreaChart/>
+                    <AreaChart data2={sumOrderEanLoss} labels2={sortingDays2}/>
                   </div>
-                  <div className='container__top4'>
-                    <div>
-                      <h3 style={{textAlign:"center"}}><b style={{color:"green"}}>Successful</b> deals last week</h3>
-                      <DealsChart/>
-                    </div> 
-                    <div>
-                      <h3 style={{textAlign:"center"}}><b style={{color:"red"}}>Failed</b> deals last week</h3>
-                      <DealsChart/>
-                    </div>
+                  <div className="container__table-template">
+                    <table>
+                        <thead >
+                        <tr className="table__header">
+                          <th></th>
+                          <th>Successful Orders</th>
+                          <th>Failed Order</th>
+                          <th>Sum</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Profit Last 7d</td>
+                            <td>{earnOrdersLastWeek[7].toFixed(2)} $</td>
+                            <td>-{lossOrdersLastWeek[7].toFixed(2)} $</td>
+                            <td>{(earnOrdersLastWeek[7]-lossOrdersLastWeek[7]).toFixed(2)} $</td>
+                          </tr>
+                          <tr>
+                            <td># Orders last 7d</td>
+                            <td>{earnDealsLastWeek.reduce((a, b) => a + b, 0)}</td>
+                            <td>{lossDealsLastWeek.reduce((a, b) => a + b, 0)}</td>
+                            <td>{lossDealsLastWeek.reduce((a, b) => a + b, 0)+earnDealsLastWeek.reduce((a, b) => a + b, 0)}</td>
+                          </tr>
+                        </tbody>
+                    </table>
                   </div>
                 </div>
-                     
-                 {/* <div  className='container__top2'>
-                  <div>
-                      <div className='table__title1' >
-                          <h4 className='table__title text-top-ten' >Top Ten Crypto</h4>
-                      </div>
-                      <div className="container__table-template">
-                        <HighestCrypto/>
-                      </div>
-                    </div>
-                 </div>
-                  */}
-
-
-
-                {/* <div className='container__top'>
-                  <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-sell' >Crypto | SELL</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <TopFiveCrypto/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title' >
-                        <h4 className='table__title text-sell' >Stocks | SELL</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <TopFiveStock/>
-                    </div>
-                  </div> 
-                </div> */}
-
-
-                {/* <div className='container__top'>
-                  <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Crypto 24h</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div>
-                  <div>
-                    <div className='table__title1' >
-                        <h4 className='table__title text-top-ten' >Highest Stock 24h</h4>
-                    </div>
-                    <div className="container__table-buy">
-                      <HighestCrypto/>
-                    </div>
-                  </div> 
-                </div> */}
-                
             </Box>
-            
+            }
+            {isLoading&&
+              <Loading/>
+            }
         </Box>
     );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -34,34 +34,34 @@ export const options = {
   },
 };
 
-const labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satrday','Total'];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Earn',
-      //data: labels.map(() => faker.datatype.number({ min: 0, max: 500 })),
-      data: [233,344,44,234,23,75,180,320],
 
-      backgroundColor: 'rgba(30, 200, 30, 0.5)',
-    },
-    {
-      label: 'Loss',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 200 })),
-      backgroundColor: 'rgba(200, 30, 30, 0.5)',
-    },
-    
-  ],
-};
+function ProfitChart({earnData1,lossData1,labels}) {
 
-// export function App() {
-//   return <Bar options={options} data={data} />;
-// }
-
-function ProfitChart() {
+  // const [earnData,setEarnData] = useState([]);
+  // const [lossData,setLossData] = useState([]);
+ 
   return (
-    <div><Bar options={options} data={data} /></div>
+    <div>
+      <Bar options={options} data={
+        { 
+          labels,
+          datasets: [
+            {
+              label: 'Earn',
+              data:earnData1,
+              backgroundColor: 'rgba(30, 200, 30, 0.5)',
+            },
+            {
+              label: 'Loss',
+              data:lossData1,
+              backgroundColor: 'rgba(200, 30, 30, 0.5)',
+            },
+          ],
+        }
+      } />
+
+    </div>
   )
 }
 

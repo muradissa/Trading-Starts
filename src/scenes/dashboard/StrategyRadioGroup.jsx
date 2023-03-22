@@ -4,10 +4,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
+import { useTheme } from '@mui/material/styles';
+import { tokens } from "../../theme";
 
 
 export default function StrategyRadioGroup({chooseStrategy}) {
-
+    const theme = useTheme();
+    const colors = tokens(theme.palette.mode);
     const [value, setValue] = React.useState('');
 
 
@@ -17,7 +20,7 @@ export default function StrategyRadioGroup({chooseStrategy}) {
     };
 
     return (
-        <div style={{width:"100%",margin:"0 auto"}}>
+        <div style={{margin:"0 auto"}}>
             
         <FormControl>
             
@@ -27,7 +30,7 @@ export default function StrategyRadioGroup({chooseStrategy}) {
                 name="row-radio-buttons-group"
                 onChange={handleRadioChange}
                 defaultValue="1"
-                // style={{background:"#aa0033"}}
+                style={{background:colors.primary[700],padding:"10px",borderRadius:"10px",gap:"15px"}}
                 >
                 <FormControlLabel value="1" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 1" />
                 <FormControlLabel value="2" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 2" />
