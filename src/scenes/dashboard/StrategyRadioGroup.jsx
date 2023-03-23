@@ -20,7 +20,7 @@ export default function StrategyRadioGroup({chooseStrategy}) {
     };
 
     return (
-        <div style={{margin:"0 auto"}}>
+        <div style={{margin:"0 auto",paddingBottom:"30px"}}>
             
         <FormControl>
             
