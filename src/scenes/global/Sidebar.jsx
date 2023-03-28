@@ -23,6 +23,7 @@ import {FaRobot} from "react-icons/fa";
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import MapIcon from '@mui/icons-material/Map';
 import HistoryIcon from '@mui/icons-material/History';
+import BalanceIcon from '@mui/icons-material/Balance';
 // AiOutlineHome FaRobot CgTrack TbMapSearch
 const Item = ({ title, to, icon, selected, setSelected ,isCollapsed}) => {
   const theme = useTheme();
@@ -270,14 +271,23 @@ const Sidebar = ({changeStatusMenu}) => {
             <Typography variant="h6" color={colors.grey[300]} sx={{ m: "15px 0 5px 20px" }}>      
               Settings
             </Typography>
-            <Item
+            {/* <Item
               title="Profile"
               to="/profile-settings"
               icon={<AccountCircleIcon />}
               selected={selected}
               setSelected={setSelected}
               isCollapsed={isCollapsed}
+            /> */}
+            <Item
+              title="Risk Management"
+              to="/risk-management"
+              icon={<BalanceIcon />}
+              selected={selected}
+              setSelected={setSelected}
+              isCollapsed={isCollapsed}
             />
+            
             <Item
               title="Dark/Light Theme"
               // to="/"
@@ -290,7 +300,7 @@ const Sidebar = ({changeStatusMenu}) => {
             />
             <Item
               title="Settings"
-              to="/"
+              to="/profile-settings"
               icon={<SettingsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

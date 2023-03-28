@@ -26,7 +26,7 @@ import DashList from "./scenes/lists/DashList";
 import BotDashboard from "./scenes/bot/BotDashboard";
 import CryptoHistory from "./scenes/bot/CryptoHistory";
 import CryptoAnalysis from "./scenes/analysis/CryptoAnalysis"
-
+import RiskManagement from "./scenes/riskManagement/RiskManagement";
 import Home from "./Home/Home";
 
 
@@ -97,6 +97,7 @@ function App() {
                     <Route exact path='/lists' element={<DashList/>}/>
                     <Route exact path='/CryptoCurrenciesAnalysis' element={<CryptoAnalysis/>}/>
                     <Route exact path='/cryptoHistory' element={<CryptoHistory/>}/>
+                    <Route exact path='/risk-management' element={<RiskManagement/>}/>
                     <Route exact path='/profile-settings' element={<GeneralInfoForm/>}/>
                   </Route>
                 </Route>               

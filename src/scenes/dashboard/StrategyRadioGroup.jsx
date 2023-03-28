@@ -32,11 +32,11 @@ export default function StrategyRadioGroup({chooseStrategy}) {
                 defaultValue="1"
                 style={{background:colors.primary[700],padding:"10px",borderRadius:"10px",gap:"15px"}}
                 >
-                <FormControlLabel value="1" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 1" />
-                <FormControlLabel value="2" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 2" />
-                <FormControlLabel value="3" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 3" />
-                <FormControlLabel value="4" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 4" />
-                <FormControlLabel value="5" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#11ffff",},}}/>} label="Strategy 5" />
+                <FormControlLabel value="1" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#4cceac",},}}/>} label="Strategy 1" />
+                <FormControlLabel value="2" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#4cceac",},}}/>} label="Strategy 2" />
+                <FormControlLabel value="3" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#4cceac",},}}/>} label="Strategy 3" />
+                <FormControlLabel value="4" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#4cceac",},}}/>} label="Strategy 4" />
+                <FormControlLabel value="5" control={<Radio sx={{color: "#ffffff",'&.Mui-checked': {color: "#4cceac",},}}/>} label="Strategy 5" />
             </RadioGroup>
         </FormControl>
         </div>
