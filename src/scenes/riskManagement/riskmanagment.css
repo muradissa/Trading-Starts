@@ -1,0 +1,22 @@
+.risk-managment-card{
+    min-width: 400px;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    padding: 10px;
+}
+.risk-managment-card-title{
+    text-align: center;
+    
+}
+
+.risk-managment-card-sub-title{
+    text-align: center;
+    margin-bottom: 0;
+    
+}
+.risk-managment-card-sub-title h3{
+    margin: 10px;
+}
+.risk-managment-card-sub-titles{
+    align-content: space-evenly;    
+}
